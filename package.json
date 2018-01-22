@@ -27,5 +27,8 @@
   },
   "scripts": {
     "test": "node_modules/.bin/karma start karma.conf.js"
+  },
+  "engines": {
+    "node": ">=4.0"
   }
 }

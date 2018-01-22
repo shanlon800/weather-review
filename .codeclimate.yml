@@ -1,0 +1,39 @@
+engines:
+  rubocop:
+    enabled: true
+  brakeman:
+    enabled: true
+  eslint:
+    enabled: true
+  csslint:
+    enabled: true
+  coffeelint:
+    enabled: true
+    checks:
+      max_line_length:
+        enabled: false
+  duplication:
+    enabled: true
+    exclude_paths:
+      - "spec/"
+    config:
+      languages:
+        ruby:
+          mass_threshold: 30
+        javascript:
+
+ratings:
+  paths:
+  - Gemfile.lock
+  - "**.erb"
+  - "**.rb"
+  - "**.css"
+  - "**.js"
+  - "**.module"
+exclude_paths:
+- app/assets/javascripts/application.js
+- app/assets/javascripts/cable.js
+- config/
+- db/
+- vendor/
+- app/assets/
