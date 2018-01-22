@@ -6,7 +6,7 @@ feature 'user signs in', %Q{
   So that I can regain access to my account
 } do
   scenario 'specify valid credentials' do
-    user = FactoryGirl.create(:user)
+    user = FactoryBot.create(:user)
 
     visit new_user_session_path
 
@@ -23,7 +23,7 @@ feature 'user signs in', %Q{
     visit new_user_session_path
 
     click_button 'Log in'
-    expect(page).to have_content('Invalid email or password')
+    expect(page).to have_content('Invalid Email or password')
     expect(page).to_not have_content('Sign Out')
   end
 end
