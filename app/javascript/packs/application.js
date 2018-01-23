@@ -7,4 +7,27 @@
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 
-console.log('Hello World from Webpacker')
+console.log('You\'re doing great!')
+
+
+import React from 'react'
+import ReactDOM from 'react-dom'
+import PropTypes from 'prop-types'
+import App from '../App'
+
+// const Hello = props => (
+//   <div>Hello {props.name}!</div>
+// )
+//
+// Hello.defaultProps = {
+//   name: 'David'
+// }
+//
+// Hello.propTypes = {
+//   name: PropTypes.string
+// }
+
+ReactDOM.render(
+  <App/>,
+  document.getElementById('app')
+);
