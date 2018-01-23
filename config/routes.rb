@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  root 'homes#index'
+  root 'static_pages#index'
   devise_for :users
+
+  get '/' => 'static_pages#index'
 
   namespace :api do
     namespace :v1 do
