@@ -22,8 +22,13 @@ class Rating extends Component {
 
   handleClick(e) {
     e.preventDefault();
-    this.setState({ selectRating: this.state.cacheRating })
-    this.props.handlerFunction(this.state.cacheRating)
+
+    let rateValue = this.state.cacheRating;
+
+    this.setState({ selectRating: rateValue });
+
+    let payLoad = [this.props.name, rateValue]
+    this.props.handlerFunction(payLoad)
   }
 
   handleHover(e) {
@@ -35,12 +40,15 @@ class Rating extends Component {
   }
 
   render() {
-    if (this.props.) {
-
+    let faIconType;
+    if (this.props.rateType == 'comfort') {
+      faIconType = 'star';
+    } else if (this.props.rateType == 'variance') {
+      faIconType = 'square';
     }
-    let starIconEmpty = 'fa fa-star-o';
-    let starIconFull = 'fa fa-star';
-    let starArray = [];
+    let iconEmpty = `fa fa-${faIconType}-o`;
+    let iconFull = `fa fa-${faIconType}`;
+    let iconArray = [];
     let source;
 
     if (this.state.selectRating === 0) {
@@ -49,24 +57,22 @@ class Rating extends Component {
       source = this.state.selectRating;
     }
 
-    let rating = source / 100 * 5;
+    let rating = source;
 
     for (var i = 0; i < rating; i++) {
-      starArray[i] = starIconFull;
+      iconArray[i] = iconFull;
     }
     for (var i = 0; i < 5-rating; i++) {
-      starArray.push(starIconEmpty);
+      iconArray.push(iconEmpty);
     }
-
     return (
       <div onMouseOut={this.handleMouseOut} className='rate-this'>
         <label>{this.props.label}</label>
-
-        <i id='20' onClick={this.handleClick} onMouseOver={this.handleHover} className={starArray[0]} />
-        <i id='40' onClick={this.handleClick} onMouseOver={this.handleHover} className={starArray[1]} />
-        <i id='60' onClick={this.handleClick} onMouseOver={this.handleHover} className={starArray[2]} />
-        <i id='80' onClick={this.handleClick} onMouseOver={this.handleHover} className={starArray[3]} />
-        <i id='100' onClick={this.handleClick} onMouseOver={this.handleHover} className={starArray[4]} />
+        <i id='1' onClick={this.handleClick} onMouseOver={this.handleHover} className={iconArray[0]} />
+        <i id='2' onClick={this.handleClick} onMouseOver={this.handleHover} className={iconArray[1]} />
+        <i id='3' onClick={this.handleClick} onMouseOver={this.handleHover} className={iconArray[2]} />
+        <i id='4' onClick={this.handleClick} onMouseOver={this.handleHover} className={iconArray[3]} />
+        <i id='5' onClick={this.handleClick} onMouseOver={this.handleHover} className={iconArray[4]} />
       </div>
     )
   };
