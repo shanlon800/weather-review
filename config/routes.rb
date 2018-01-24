@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   get '/' => 'static_pages#index'
+  get '/cities' => 'static_pages#index'
+  get '/cities/:id' => 'static_pages#index'
 
   namespace :api do
     namespace :v1 do
