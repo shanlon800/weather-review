@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import CityShowTile from '../components/CityShowTile'
 import ReviewShowTile from '../components/ReviewShowTile'
+import ReviewFormContainer from './ReviewFormContainer'
 
 class CityShowContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
       city: [],
-      reviews: []
+      reviews: [],
     }
   }
 
@@ -50,6 +51,7 @@ class CityShowContainer extends Component {
         state={this.state.city.state}
         description={this.state.city.description}
       />
+      <ReviewFormContainer />
       {reviews}
       </div>
     )
