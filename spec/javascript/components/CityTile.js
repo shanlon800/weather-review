@@ -10,6 +10,8 @@ describe('CityTile', () => {
     jasmineEnzyme();
     wrapper = mount(
       <CityTile
+        id={1}
+        key={1}
         city_name="Brahston"
         state="WA"
         description="WA BRAH"
@@ -32,4 +34,5 @@ describe('CityTile', () => {
   it('should render an li tag with the description property', () => {
     expect(wrapper.find('li').text()).toBe('WA BRAH')
   });
+
 });
