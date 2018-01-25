@@ -17,12 +17,7 @@ describe('ReviewShowTile', () => {
     );
   });
 
-  it('should render an h3 tag', () => {
-    expect(wrapper.find('h3')).toBePresent();
-  });
-  it('should render an h3 tag with Reviews:', () => {
-    expect(wrapper.find('h3').text()).toBe("Reviews:");
-  });
+
 
   it('should render an h5 tag with the review body', () => {
     expect(wrapper.find('h5').text()).toBe("New York is a great city to live in");
