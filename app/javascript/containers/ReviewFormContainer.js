@@ -18,6 +18,11 @@ class ReviewFormContainer extends Component {
     // this.handleVarianceChange = this.handleVarianceChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleRateChange = this.handleRateChange.bind(this);
+    this.handleClearButton = this.handleClearButton.bind(this);
+  }
+
+  clearErrors() {
+    this.setState({errors: []})
   }
 
   handleRateChange(e) {
@@ -40,9 +45,55 @@ class ReviewFormContainer extends Component {
   //   this.setState({reviewVariance: newVariance})
   // }
 
+  
+
   handleSubmit(event) {
     event.preventDefault()
+    this.clearErrors()
+    let errors = this.validateComfort()
+    errors = errors.concat(this.validateVariance())
+    if (errors.length == 0) {
+      let formPayload = {
+        reviewBody: this.state.reviewBody,
+        reviewComfort: this.state.reviewComfort,
+        reviewVariance: this.state.reviewVariance
+      }
+    } else {
+      this.setState({errors: errors})
+    }
+    console.log(this.state)
   }
+
+  validateComfort(){
+    if(this.state.reviewComfort === 0) {
+      return['Please select a Comfort Index Rating']
+    }
+    else {
+      return[]
+    }
+  }
+
+  validateVariance(){
+    if(this.state.reviewVariance === 0) {
+      return['Please select a Variance Rating']
+    }
+    else {
+      return[]
+    }
+  }
+
+  handleClearButton(event) {
+    event.preventDefault()
+    this.setState({
+      reviewBody: '',
+      reviewComfort: 0,
+      reviewVariance: 0
+    })
+  }
+
+
+
+
 
   render() {
     return(

@@ -33,6 +33,20 @@ class CityShowContainer extends Component {
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
+
+
+
+  addNewReview(formPayload) {
+    fetch('/api/v1/reviews', {
+      method: 'POST',
+      body: JSON.stringify(formPayload)
+    }).then(response => response.json())
+    .then(body => {
+      let newReview = this.state.reviews.concat(body)
+      this.setState({reviews: newReview})
+    })
+  }
+
   render() {
     let reviews = this.state.reviews.map(review => {
       return(
