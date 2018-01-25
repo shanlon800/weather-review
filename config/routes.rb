@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   get '*/path' => 'static_pages#index'
+  get '/cities' => 'static_pages#index'
   get '/cities/:id' => 'static_pages#index'
 
   namespace :api do
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
       end
 
       resources :reviews, only: [:create]
+      resources :users, only: [:index]
     end
   end
 
