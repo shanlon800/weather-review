@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create(email: "email@example.com", password: "password1234")
+User.create!(email: "email@example.com", password: "password1234")
 
 CITIES = [
   {
@@ -59,11 +59,11 @@ CITIES = [
 
 
 CITIES.each do |city|
-  City.create(city_name: city[:city], state: city[:state], user_id: city[:user_id], description: city[:description])
+  City.create!(city_name: city[:city], state: city[:state], user_id: city[:user_id], description: city[:description])
 end
 
 35.times {
   city = City.find(id = rand(CITIES.length)+1)
   body = Faker::Lorem.paragraph
-  Review.create(city_id: city.id, user_id: User.first.id, body: "#{body}", comfort_index: rand(5)+1, weather_variance: rand(5)+1)
+  Review.create!(city_id: city.id, user_id: User.first.id, body: "#{body}", comfort_index: rand(5)+1, weather_variance: rand(5)+1)
 }
