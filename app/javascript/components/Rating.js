@@ -20,6 +20,7 @@ class Rating extends Component {
     }
   }
 
+ 
   handleClick(e) {
     e.preventDefault();
 
