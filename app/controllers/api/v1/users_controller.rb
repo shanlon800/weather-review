@@ -9,7 +9,7 @@ class Api::V1::UsersController < ApplicationController
       @cities = City.where(user_id: @current_user.id)
       render json: {current_user: @current_user, reviews: @reviews, cities: @cities}
     else
-      render json: {current_user: nil, message: "Please sign in."}
+      render json: {current_user: nil, message: "Please sign in.", status: "401 UNAUTHORIZED"}
     end
   end
 
