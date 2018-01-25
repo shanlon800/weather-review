@@ -6,16 +6,20 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+User.create(email: "email@example.com", password: "password1234")
+
 CITIES = [
   {
     city: "Boston",
     state: "MA",
-    user_id: User.first.id
+    user_id: User.first.id,
+    description: "This is a city. It gets cold here during the winter."
   },
   {
     city: "Seattle",
     state: "WA",
-    user_id: User.first.id
+    user_id: User.first.id,
+    description: "This is also a city. It doesn't get so cold here."
   },
   {
     city: "Austin",
@@ -25,31 +29,37 @@ CITIES = [
   {
     city: "Louisville",
     state: "KY",
-    user_id: User.first.id
+    user_id: User.first.id,
+    description: "literally everyone here likes whiskey."
   },
   {
-    city: "Boston",
-    state: "MA",
+    city: "Arlington",
+    state: "VA",
     user_id: User.first.id
   },
   {
     city: "New York",
     state: "NY",
-    user_id: User.first.id
+    user_id: User.first.id,
+    description: "something someting empire state"
   },
   {
     city: "Detroit",
     state: "MI",
-    user_id: User.first.id
+    user_id: User.first.id,
+    description: "we used to have clean water . . . and jobs"
+  },
+  {
+    city: "Boulder",
+    state: "CO",
+    user_id: User.first.id,
+    description: "where people go to . . . boulder."
   }
 ]
 
-User.create(email: "email@example.com", password: "password1234")
-
-
 
 CITIES.each do |city|
-  City.create(city_name: city[:city], state: city[:state], user_id: city[:user_id])
+  City.create(city_name: city[:city], state: city[:state], user_id: city[:user_id], description: city[:description])
 end
 
 35.times {
