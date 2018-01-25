@@ -35,24 +35,25 @@ class ReviewFormContainer extends Component {
     this.setState({reviewBody: newBody})
   }
 
-//   componentDidMount() {
-//   fetch('/api/v1/users')
-//     .then(response => {
-//       if (response.ok) {
-//         return response;
-//       } else {
-//         let errorMessage = `${response.status} (${response.statusText})`,
-//             error = new Error(errorMessage);
-//         throw(error);
-//       }
-//     })
-//     .then(response => response.json())
-//     .then(body => {
-//       let currentUser = body.current_user;
-//       this.setState({ currentUser: currentUser });
-//     })
-//     .catch(error => console.error(`Error in fetch: ${error.message}`));
-// }
+  componentDidMount() {
+  fetch('/api/v1/users')
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+            error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    debugger
+    .then(body => {
+      let currentUser = body.current_user;
+      this.setState({ currentUser: currentUser });
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
+}
 
 
   handleSubmit(event) {
