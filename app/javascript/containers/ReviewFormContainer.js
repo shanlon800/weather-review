@@ -11,11 +11,11 @@ class ReviewFormContainer extends Component {
       reviewBody: "",
       reviewComfort: 0,
       reviewVariance: 0,
-      errors: []
+      errors: [],
+      currentUser: null,
+      currentCity: parseInt(this.props.id, 10)
     }
     this.handleBodyChange = this.handleBodyChange.bind(this);
-    // this.handleComfortChange = this.handleComfortChange.bind(this)
-    // this.handleVarianceChange = this.handleVarianceChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleRateChange = this.handleRateChange.bind(this);
     this.handleClearButton = this.handleClearButton.bind(this);
@@ -34,18 +34,26 @@ class ReviewFormContainer extends Component {
     let newBody = event.target.value
     this.setState({reviewBody: newBody})
   }
-  //
-  // handleComfortChange(event) {
-  //   let newComfort = event.target.value
-  //   this.setState({reviewComfortIndex: newComfort})
-  // }
-  //
-  // handleVarianceChange(event) {
-  //   let newVariance = event.target.value
-  //   this.setState({reviewVariance: newVariance})
-  // }
 
-  
+//   componentDidMount() {
+//   fetch('/api/v1/users')
+//     .then(response => {
+//       if (response.ok) {
+//         return response;
+//       } else {
+//         let errorMessage = `${response.status} (${response.statusText})`,
+//             error = new Error(errorMessage);
+//         throw(error);
+//       }
+//     })
+//     .then(response => response.json())
+//     .then(body => {
+//       let currentUser = body.current_user;
+//       this.setState({ currentUser: currentUser });
+//     })
+//     .catch(error => console.error(`Error in fetch: ${error.message}`));
+// }
+
 
   handleSubmit(event) {
     event.preventDefault()
@@ -54,14 +62,16 @@ class ReviewFormContainer extends Component {
     errors = errors.concat(this.validateVariance())
     if (errors.length == 0) {
       let formPayload = {
-        reviewBody: this.state.reviewBody,
-        reviewComfort: this.state.reviewComfort,
-        reviewVariance: this.state.reviewVariance
+        body: this.state.reviewBody,
+        comfort_index: this.state.reviewComfort,
+        weather_variance: this.state.reviewVariance,
+        city_id: this.state.currentCity,
+        user_id: 0
       }
+      this.props.addNewReview(formPayload);
     } else {
       this.setState({errors: errors})
     }
-    console.log(this.state)
   }
 
   validateComfort(){

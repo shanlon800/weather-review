@@ -10,6 +10,7 @@ class CityShowContainer extends Component {
       city: [],
       reviews: [],
     }
+    this.addNewReview = this.addNewReview.bind(this)
   }
 
   componentDidMount() {
@@ -48,6 +49,7 @@ class CityShowContainer extends Component {
   }
 
   render() {
+    let addNewReview = (formPayload) => this.addNewReview(formPayload)
     let reviews = this.state.reviews.map(review => {
       return(
         <ReviewShowTile
@@ -65,7 +67,10 @@ class CityShowContainer extends Component {
         state={this.state.city.state}
         description={this.state.city.description}
       />
-      <ReviewFormContainer />
+      <ReviewFormContainer
+        id={this.props.params.id}
+        addNewReview={this.addNewReview}
+      />
       {reviews}
       </div>
     )
