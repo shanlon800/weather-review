@@ -41,19 +41,18 @@
     <% end%>
     <%else %>
     <% if @current_user.avatar.url.present? %>
-    <a><%= image_tag(current_user.avatar.url) %></a>
+        <a><%= image_tag(current_user.avatar.url) %></a>
     <p>
-
-    <%= f.file_field :avatar %>
-    <%= f.hidden_field :avatar_cache %>
+      <%= f.file_field :avatar %>
+      <%= f.hidden_field :avatar_cache %>
     <% end %>
     <label>
       <%= f.check_box :remove_avatar %>
       Remove avatar
     </label>
-  </p>
+    </p>
   </div>
-  <% end%>
+    <% end%>
 
   <div class="actions">
     <%= f.submit 'Update' %>
