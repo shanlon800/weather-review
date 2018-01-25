@@ -42,7 +42,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
 
       expect(returned_json["current_user"]).to eq nil
       expect(returned_json["message"]).to eq "Please sign in."
-      expect(returned_json["status"]).to eq "401 UNAUTHORIZED"
+      expect(returned_json["status"]).to eq 401
 
     end
   end
