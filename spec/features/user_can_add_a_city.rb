@@ -1,16 +1,12 @@
 require "rails_helper"
-
-# [] A restaurant must have a name, address, city, state, and zip code. It can optionally have a description.
-# [] Visiting the `/restaurants/new` path should display a form for creating a new restaurant.
-# [] When adding a new restaurant, if I fill out the form correctly, I should see the page for the newly created restaurant.
-# [] When adding a new restaurant, if I fill out the form incorrectly and submit the form, I should see the form and be displayed the validation errors.
+require 'carrierwave/test/matchers'
 
 
 feature "user can add city" do
   scenario "user adds new city successfully" do
 
     visit new_city_path
-    expect(page).to have_content "New Restaurant Form"
+    expect(page).to have_content "New City Form"
 
     fill_in 'Name', with: "Boston"
     fill_in 'State', with: "MA"
@@ -31,17 +27,12 @@ feature "user can add city" do
     expect(page).to have_content "State can't be blank"
 
   end
-end
-describe City do
-  include CarrierWave::Test::Matchers
-    let(:user) { double('user') }
-    let(:uploader) { City.new(user, :banner) }
-    before do
-      User.enable_processing = true
-      File.open(path_to_file) { |f| uploader.store!(f) }
-    end
-    after do
-      User.enable_processing = false
-      uploader.remove!
-    end
+
+  scenario "user can't add a city if not signed in" do
+
+  visit cities_path
+  expect(page).to have_content "Add New City"
+
+  click_button "Add New City"
+  expect(page).to have_content "You need to be signed in to add a City."
 end

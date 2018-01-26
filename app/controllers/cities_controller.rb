@@ -14,10 +14,7 @@ class CitiesController < ApplicationController
 
   def create
     @city = City.new(city_params.merge(user_id: current_user.id))
-    unless user_signed_in?
-      flash[:notice] = "You need to be signed in to add a City."
-      redirect_to new_user_session_path
-    end
+    
     if @city.save
        flash[:notice] = "Your City has been added."
        redirect_to cities_path
