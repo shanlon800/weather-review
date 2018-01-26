@@ -1,6 +1,6 @@
-import BodyField from '../../../app/javascript/components/BodyField'
+import TextField from '../../../app/javascript/components/TextField'
 
-describe('BodyField', () => {
+describe('TextField', () => {
   let name,
   label,
   value,
@@ -10,7 +10,7 @@ describe('BodyField', () => {
   beforeEach(() => {
     jasmineEnzyme();
     wrapper = mount(
-      <BodyField
+      <TextField
         label="Review"
         name="reviewBody"
         value="This is a great city."

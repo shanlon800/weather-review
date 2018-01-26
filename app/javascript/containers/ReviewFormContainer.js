@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import BodyField from '../components/BodyField'
+import TextField from '../components/TextField'
 import Rating from '../components/Rating'
 
 class ReviewFormContainer extends Component {
@@ -90,11 +90,13 @@ class ReviewFormContainer extends Component {
 
 
   render() {
+    let errorMessage = this.state.errors.map(error => {
+      return(<p key={error}> {error} </p>)
+    })
     return(
       <div>
-        <p>{this.state.errors[0]}</p>
-        <p>{this.state.errors[1]}</p>
           <form className="new-article-form callout">
+          {errorMessage}
             <Rating
               content={this.state.reviewComfort}
               label="Comfort Index"
@@ -111,7 +113,7 @@ class ReviewFormContainer extends Component {
               value={this.state.reviewVariance}
               handlerFunction={this.handleRateChange}
             />
-            <BodyField
+            <TextField
               content={this.state.reviewBody}
               label="Review"
               name="reviewBody"

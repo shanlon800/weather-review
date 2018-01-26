@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BodyField = (props) => {
+const TextField = (props) => {
   return (
     <label>{props.label}
       <textarea
@@ -13,4 +13,4 @@ const BodyField = (props) => {
   )
 }
 
-export default BodyField;
+export default TextField;
