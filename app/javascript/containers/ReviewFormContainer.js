@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import BodyField from '../components/BodyField'
-import ComfortField from '../components/ComfortField'
-import VarianceField from '../components/VarianceField'
 import Rating from '../components/Rating'
 
 class ReviewFormContainer extends Component {
@@ -12,7 +10,6 @@ class ReviewFormContainer extends Component {
       reviewComfort: 0,
       reviewVariance: 0,
       errors: [],
-      currentUser: null,
       currentCity: parseInt(this.props.id, 10)
     }
     this.handleBodyChange = this.handleBodyChange.bind(this);
@@ -25,36 +22,33 @@ class ReviewFormContainer extends Component {
     this.setState({errors: []})
   }
 
-  handleRateChange(e) {
-    this.setState({ [e[0]]: e[1] })
-    console.log(`Value of ${e[0]} is ${e[1]}.`);
-  }
-
   handleBodyChange(event) {
     let newBody = event.target.value
     this.setState({reviewBody: newBody})
   }
 
-  componentDidMount() {
-  fetch('/api/v1/users')
-    .then(response => {
-      if (response.ok) {
-        return response;
-      } else {
-        let errorMessage = `${response.status} (${response.statusText})`,
-            error = new Error(errorMessage);
-        throw(error);
-      }
+  handleClearButton(event) {
+    event.preventDefault()
+    this.setState({
+      reviewBody: '',
+      reviewComfort: 0,
+      reviewVariance: 0
     })
-    .then(response => response.json())
-    debugger
-    .then(body => {
-      let currentUser = body.current_user;
-      this.setState({ currentUser: currentUser });
-    })
-    .catch(error => console.error(`Error in fetch: ${error.message}`));
-}
+  }
 
+  handleClearForm() {
+    this.setState({
+      reviewBody: "",
+      reviewComfort: 0,
+      reviewVariance: 0,
+      currentUser: this.props.currentUser,
+      currentCity: parseInt(this.props.id, 10)
+    })
+  }
+
+  handleRateChange(event) {
+    this.setState({ [event[0]]: event[1] })
+  }
 
   handleSubmit(event) {
     event.preventDefault()
@@ -67,9 +61,10 @@ class ReviewFormContainer extends Component {
         comfort_index: this.state.reviewComfort,
         weather_variance: this.state.reviewVariance,
         city_id: this.state.currentCity,
-        user_id: 0
+        user_id: this.props.currentUser
       }
       this.props.addNewReview(formPayload);
+      this.handleClearForm();
     } else {
       this.setState({errors: errors})
     }
@@ -92,18 +87,6 @@ class ReviewFormContainer extends Component {
       return[]
     }
   }
-
-  handleClearButton(event) {
-    event.preventDefault()
-    this.setState({
-      reviewBody: '',
-      reviewComfort: 0,
-      reviewVariance: 0
-    })
-  }
-
-
-
 
 
   render() {

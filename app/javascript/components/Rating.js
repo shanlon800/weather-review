@@ -20,7 +20,7 @@ class Rating extends Component {
     }
   }
 
- 
+
   handleClick(e) {
     e.preventDefault();
 
@@ -66,6 +66,7 @@ class Rating extends Component {
     for (var i = 0; i < 5-rating; i++) {
       iconArray.push(iconEmpty);
     }
+    
     return (
       <div onMouseOut={this.handleMouseOut} className='rate-this'>
         <label>{this.props.label}</label>
