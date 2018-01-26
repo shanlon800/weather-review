@@ -18,6 +18,8 @@
       </li>
     </ul>
 
+      <li><%= link_to "Add New City",  new_city_path, class: "success button" %></li>
+
     <section class="top-bar-section">
       <ul class="right">
         <%- if current_user -%>
@@ -40,10 +42,12 @@
     </div>
   <%- end -%>
 
+
   <%= yield %>
 
   <%= javascript_include_tag 'application' %>
   <%= javascript_pack_tag 'application' %>
   <%= yield :extra_footer %>
+
 </body>
 </html>
