@@ -2,8 +2,9 @@ Rails.application.routes.draw do
   root 'static_pages#index'
   devise_for :users
 
-  get '*/path' => 'static_pages#index'
+  # get '*/path' => 'static_pages#index'
   get '/cities' => 'static_pages#index'
+  get '/cities/new' => 'new_city_path'
   get '/cities/:id' => 'static_pages#index'
 
   namespace :api do
@@ -16,5 +17,7 @@ Rails.application.routes.draw do
       resources :users, only: [:index]
     end
   end
+
+  resources :cities, only: [:new, :create, :index,]
 
 end
