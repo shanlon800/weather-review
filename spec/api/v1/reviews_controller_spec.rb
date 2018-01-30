@@ -45,7 +45,8 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
 
   describe "Post#create" do
     it 'creates a new review' do
-      sign_in :user, user_1
+      sign_in(user_2, :scope => :user)
+
 
       post_json = {review: { city_id: city_one.id, user_id: user_1.id, body: "Boston is meh", comfort_index: 3, weather_variance: 4}}
       city_reviews = Review.where(city_id: city_one.id)
@@ -70,13 +71,44 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
 
   describe "Post#destroy" do
     it 'deletes a review' do
-      sign_in :user, user_1
+      sign_in(user_1, :scope => :user)
+
 
       city_reviews = Review.where(city_id: city_one.id)
       prev_count = city_reviews.count
 
       delete :destroy, params: {id: review_three.id}
       expect(Review.where(city_id: city_one.id).count).to eq(prev_count - 1)
+    end
+
+    it 'will not allow review to be deleted if not signed into same account that posted' do
+      sign_in(user_2, :scope => :user)
+
+      city_reviews = Review.where(city_id: city_one.id)
+      prev_count = city_reviews.count
+
+      delete :destroy, params: {id: review_three.id}
+      expect(Review.where(city_id: city_one.id).count).to eq(prev_count)
+
+      returned_json = JSON.parse(response.body)
+      expect(response.status).to eq 401
+      expect(response.content_type).to eq("application/json")
+      expect(returned_json["errors"]).to eq "Access Denied"
+    end
+
+    it 'will not allow review to be deleted if not signed in' do
+      sign_in(user_2, :scope => :user)
+
+      city_reviews = Review.where(city_id: city_one.id)
+      prev_count = city_reviews.count
+
+      delete :destroy, params: {id: review_three.id}
+      expect(Review.where(city_id: city_one.id).count).to eq(prev_count)
+
+      returned_json = JSON.parse(response.body)
+      expect(response.status).to eq 401
+      expect(response.content_type).to eq("application/json")
+      expect(returned_json["errors"]).to eq "Access Denied"
     end
   end
 end
