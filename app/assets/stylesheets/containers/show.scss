@@ -3,5 +3,25 @@
 }
 
 .reviewContainer {
-  
+  background-color: $over-grey;
+  padding: 15px;
+  margin: 15px;
+  border-radius: 10px;
+  font-family: $fonts-sans;
+
+  h5 {
+    margin: 0px;
+  }
+
+  .rating {
+    i {
+      padding: 0 1px;
+    }
+  }
+
+
+}
+
+.votes {
+  text-align: center;
 }

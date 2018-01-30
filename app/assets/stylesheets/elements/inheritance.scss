@@ -1,0 +1,23 @@
+%city-objects {
+  text-align: center;
+  padding: 15px;
+  border-top: 1px solid $over-grey;
+
+  h1, h2 {
+    font-family: $fonts-serif;
+  }
+
+  #show-description {
+    font-family: $fonts-sans;
+    width: inherit;
+  }
+
+  a, a:hover{
+    text-decoration: none;
+    color: inherit;
+  }
+
+  li {
+    list-style-type: none;
+  }
+}

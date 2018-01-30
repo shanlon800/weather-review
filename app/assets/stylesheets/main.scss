@@ -1,43 +1,23 @@
 @import 'elements/colors';
+@import 'elements/variables';
 @import 'elements/animations';
+@import 'elements/inheritance';
 @import 'containers/show';
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Ubuntu+Mono|Volkhov');
 
-// inheritance
-%city-objects {
-  text-align: center;
-  padding: 15px;
-  border-top: 1px solid $over-grey;
-
-  h1, h2 {
-    font-family: 'Volkhov', Times, serif;
-  }
-
-  a, a:hover{
-    text-decoration: none;
-    color: inherit;
-  }
-
-  li {
-    list-style-type: none;
-  }
-}
-
-// tags
-
+// tags - - - - - - - - - - - - - - -
 body {
-  font-family: 'Open Sans', Arial, sans-serif;
+  font-family: $fonts-sans;
   margin: auto !important;
   width: 65%;
   background-color: $bg-grey !important;
 }
 
 h4, h5, h6 {
-  font-family: 'Open Sans', Arial, sans-serif;
+  font-family: $fonts-sans;
 }
 
-// ids
-
+// ids - - - - - - - - - - - - - - -
 #app {
   background-color: #ffffff;
   box-shadow: 0px 1px 1px $shadow-grey;
@@ -47,8 +27,7 @@ h4, h5, h6 {
   margin-bottom: 15px;
 }
 
-// classes
-
+// classes - - - - - - - - - - - - - - -
 .top-bar {
   text-shadow: 0px 1px 1px $shadow-grey;
   background-color: $nav-blue !important;
