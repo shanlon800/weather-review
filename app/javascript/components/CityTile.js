@@ -3,11 +3,11 @@ import { Link } from 'react-router';
 
 const CityTile = props => {
   return(
-    <div>
+    <div className='cityContainer'>
       <Link to={`/cities/${props.id}`}>
-        <h3>{props.city_name} {props.state}</h3>
+        <h2>{props.city_name}, {props.state}</h2>
+        <li>{props.description}</li>
       </Link>
-      <li>{props.description}</li>
     </div>
   )
 }
