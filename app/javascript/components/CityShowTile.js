@@ -2,7 +2,7 @@ import React from 'react';
 
 const CityShowTile = props => {
   return(
-    <div>
+    <div className='city-head'>
       <h1>{props.city_name} {props.state}</h1>
       <p id="show-description">{props.description}</p>
 

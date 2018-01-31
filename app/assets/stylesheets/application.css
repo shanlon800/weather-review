@@ -10,8 +10,10 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
+ *  require_tree .
+
  *= require_self
+ *= require main
  *= require foundation_and_overrides
 
  */
@@ -21,8 +23,6 @@
    height: 41px;
    margin-top: 2px;
  }
-
-
 
  a img {
      width: 17%;

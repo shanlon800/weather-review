@@ -43,7 +43,7 @@ class CitiesIndexContainer extends Component {
       )
     })
     return (
-      <div class="index">
+      <div className="index">
         {cities}
       </div>
     )

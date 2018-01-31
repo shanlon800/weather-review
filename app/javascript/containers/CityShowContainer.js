@@ -95,6 +95,7 @@ class CityShowContainer extends Component {
       return(
         <ReviewShowTile
           key={review.id}
+          id={review.id}
           body={review.body}
           comfort_index={review.comfort_index}
           weather_variance={review.weather_variance}
