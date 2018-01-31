@@ -104,7 +104,7 @@ class CityShowContainer extends Component {
     .then(response => response.json())
     .then(body => {
       this.setState({
-        reviews: body
+        reviews: body.reviews
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
@@ -115,6 +115,7 @@ class CityShowContainer extends Component {
     let addNewReview = (formPayload) => this.addNewReview(formPayload)
     let reviews = this.state.reviews.map(review => {
       let handleDelete = () => {this.deleteReview(review.id)}
+
       return(
         <ReviewShowTile
           key={review.id}

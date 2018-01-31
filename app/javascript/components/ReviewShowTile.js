@@ -34,7 +34,7 @@ const ReviewShowTile = props => {
           <div>•</div>
           <div><i className='fa fa-chevron-down'></i></div>
         </span>
-        <button>onClick={props.handleDelete}>Delete</button>
+        <button onClick={props.handleDelete}>Delete</button>
       </div>
     )
   } else {
@@ -65,6 +65,7 @@ const ReviewShowTile = props => {
           <div><i className='fa fa-chevron-down'></i></div>
         </span>
       </div>
+    )
   }
 }
 
