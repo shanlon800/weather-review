@@ -1,5 +1,7 @@
 class Api::V1::ReviewsController < ApplicationController
+  before_action :authorize_user, except: [:index]
   skip_before_action :verify_authenticity_token, only: [:create, :destroy]
+
   def index
     city_id = params[:city_id]
     city_reviews = Review.where(city_id: city_id)
@@ -7,15 +9,11 @@ class Api::V1::ReviewsController < ApplicationController
   end
 
   def create
-    if current_user != nil
-      review = Review.new(review_params)
-      if review.save
-        render json: review
-      else
-        render json: { error: review.errors.full_messages }, status: :unprocessable_entity
-      end
+    review = Review.new(review_params)
+    if review.save
+      render json: review
     else
-      render json: { errors: "Access Denied" }, status: 401
+      render json: { error: review.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -45,4 +43,10 @@ class Api::V1::ReviewsController < ApplicationController
       :user_id
     )
   end
+
+    def authorize_user
+      if !user_signed_in?
+        raise ActionController::RoutingError.new("Not Found")
+      end
+    end
 end

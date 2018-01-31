@@ -46,7 +46,7 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
 
   describe "Post#create" do
     it 'creates a new review' do
-      sign_in(user_2, :scope => :user)
+      sign_in(user_1, :scope => :user)
 
 
       post_json = {review: { city_id: city_one.id, user_id: user_1.id, body: "Boston is meh", comfort_index: 3, weather_variance: 4}}
@@ -60,13 +60,8 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
       post_json = {review: { city_id: city_one.id, user_id: user_1.id, body: "Boston is meh", comfort_index: 3, weather_variance: 4}}
       city_reviews = Review.where(city_id: city_one.id)
       prev_count = city_reviews.count
-      post(:create, params: post_json)
-      expect(Review.where(city_id: city_one.id).count).to eq(prev_count)
+      expect{ get :create }.to raise_error(ActionController::RoutingError)
 
-      returned_json = JSON.parse(response.body)
-      expect(response.status).to eq 401
-      expect(response.content_type).to eq("application/json")
-      expect(returned_json["errors"]).to eq "Access Denied"
     end
   end
 
