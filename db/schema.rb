@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20180126161514) do
   enable_extension "plpgsql"
 
   create_table "cities", force: :cascade do |t|
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.string "city_name", null: false
     t.string "state", null: false
     t.text "description"
