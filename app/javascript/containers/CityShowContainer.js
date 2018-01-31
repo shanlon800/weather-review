@@ -13,7 +13,7 @@ class CityShowContainer extends Component {
       admin: false
     }
     this.addNewReview = this.addNewReview.bind(this)
-    this.deleteReview= this.deleteReview.bind(this)
+    this.deleteReview = this.deleteReview.bind(this)
   }
 
   addNewReview(formPayload) {
@@ -34,7 +34,7 @@ class CityShowContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-      let newReview = this.state.reviews.concat(body)
+      let newReview = this.state.reviews.concat(body.review)
       this.setState({reviews: newReview})
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
@@ -118,6 +118,7 @@ class CityShowContainer extends Component {
       return(
         <ReviewShowTile
           key={review.id}
+          id={review.id}
           body={review.body}
           comfort_index={review.comfort_index}
           weather_variance={review.weather_variance}

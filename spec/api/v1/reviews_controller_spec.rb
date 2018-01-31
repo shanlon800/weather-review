@@ -11,13 +11,14 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
   let!(:review_two) { Review.create!(city_id: city_one.id, user_id: user_1.id, body: "Boston is . . . meh.", comfort_index: 4, weather_variance: 1) }
   let!(:review_three) { Review.create!(city_id: city_one.id, user_id: user_1.id, comfort_index: 2, weather_variance: 2) }
 
+  let!(:upvote_one) { Vote.create!(user_id: user_1.id, review_id: review_one.id, vote: 1)}
+  let!(:upvote_two) { Vote.create!(user_id: user_1.id, review_id: review_one.id, vote: 1)}
 
-  let!(:review_params) { review_params = { city_id: city_one.id, user_id: user_1.id, body: "Boston is meh", comfort_index: 3, weather_variance: 4} }
+  let!(:upvote_three) { Vote.create!(user_id: user_1.id, review_id: review_two.id, vote: 1)}
+  let!(:downvote_one) { Vote.create!(user_id: user_1.id, review_id: review_two.id, vote: -1)}
 
-
-
-
-
+  let!(:downvote_two) { Vote.create!(user_id: user_1.id, review_id: review_three.id, vote: -1)}
+  let!(:downvote_three) { Vote.create!(user_id: user_1.id, review_id: review_three.id, vote: -1)}
 
   describe "Get#index" do
     it 'should return a list of all reviews based on the city_id' do
@@ -27,19 +28,27 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
 
       expect(response.status).to eq 200
       expect(response.content_type).to eq('application/json')
+      review_data = returned_json["reviews"]
 
-      expect(returned_json.length).to eq 3
-      expect(returned_json[0]['city_id']).to eq city_one.id
-      expect(returned_json[0]['body']).to eq "Boston is alright. It gets cold."
-      expect(returned_json[0]['comfort_index']).to eq 3
+      expect(review_data.length).to eq 3
 
-      expect(returned_json[1]['city_id']).to eq city_one.id
-      expect(returned_json[1]['body']).to eq "Boston is . . . meh."
-      expect(returned_json[1]['weather_variance']).to eq 1
+      expect(review_data[0]['city_id']).to eq city_one.id
+      expect(review_data[0]['body']).to eq "Boston is alright. It gets cold."
+      expect(review_data[0]['comfort_index']).to eq 3
+      expect(review_data[0]['upvotes']).to eq 2
+      expect(review_data[0]['downvotes']).to eq 0
 
-      expect(returned_json[2]['city_id']).to eq city_one.id
-      expect(returned_json[2]['body']).to eq nil
-      expect(returned_json[2]['weather_variance']).to eq 2
+      expect(review_data[1]['city_id']).to eq city_one.id
+      expect(review_data[1]['body']).to eq "Boston is . . . meh."
+      expect(review_data[1]['weather_variance']).to eq 1
+      expect(review_data[1]['upvotes']).to eq 1
+      expect(review_data[1]['downvotes']).to eq -1
+
+      expect(review_data[2]['city_id']).to eq city_one.id
+      expect(review_data[2]['body']).to eq nil
+      expect(review_data[2]['weather_variance']).to eq 2
+      expect(review_data[2]['upvotes']).to eq 0
+      expect(review_data[2]['downvotes']).to eq -2
     end
   end
 
