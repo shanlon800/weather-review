@@ -14,13 +14,29 @@ class CitiesController < ApplicationController
 
   def create
     @city = City.new(city_params.merge(user_id: current_user.id))
-    
+
     if @city.save
        flash[:notice] = "Your City has been added."
        redirect_to cities_path
     else
       flash[:error] = @city.errors.full_messages.join(". ")
       render :new
+    end
+  end
+
+  def edit
+    @city = City.find(params[:id])
+
+  end
+
+  def update
+
+    @city = City.find(params[:id])
+    if @city.update_attributes(city_params)
+      redirect_to city_path(@city)
+    else
+      flash[:error] = @city.errors.full_messages.join(". ")
+      render :edit
     end
   end
 
