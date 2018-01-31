@@ -5,20 +5,20 @@ const CityTile = props => {
   if (props.banner.url != null ){
 
     return(
-      <div class="cityContainer">
+      <div className="cityContainer">
         <Link to={`/cities/${props.id}`}>
-          <h2 class="namestate">{props.city_name}, {props.state}</h2>
-          <li class="description">{props.description}</li>
-          <img class="banner" src={props.banner.url} />
+          <h2 className="namestate">{props.city_name}, {props.state}</h2>
+          <li className="description">{props.description}</li>
+          <img className="banner" src={props.banner.url} />
         </Link>
       </div>
     )
   } else {
     return(
-      <div class="cityContainer">
+      <div className="cityContainer">
         <Link to={`/cities/${props.id}`}>
-          <h2 class="namestate">{props.city_name}, {props.state}</h2>
-          <li class="description">{props.description}</li>
+          <h2 className="namestate">{props.city_name}, {props.state}</h2>
+          <li className="description">{props.description}</li>
         </Link>
       </div>
     )
