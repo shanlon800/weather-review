@@ -2,5 +2,5 @@ class Vote < ApplicationRecord
   belongs_to :review
   belongs_to :user
 
-  validates :vote, inclusion: { in: [true, false, nil] }
+  validates :vote, numericality: { :greater_than_or_equal_to => -1, :less_than_or_equal_to => 1 }
 end

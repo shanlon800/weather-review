@@ -3,7 +3,7 @@ class CreateVoteSystem < ActiveRecord::Migration[5.1]
     create_table :votes do |t|
       t.belongs_to :user, null: false
       t.belongs_to :review, null: false
-      t.boolean :vote
+      t.integer :vote
     end
   end
 end
