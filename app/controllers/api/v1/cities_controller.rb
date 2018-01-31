@@ -8,4 +8,5 @@ class Api::V1::CitiesController < ApplicationController
     reviews = city.reviews
     render json: {city: city, reviews: reviews}
   end
+
 end

@@ -15,6 +15,7 @@ describe('CityTile', () => {
         city_name="Brahston"
         state="WA"
         description="WA BRAH"
+        banner="IMG_2952.JPG"
       />
     );
   });

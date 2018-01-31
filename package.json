@@ -23,7 +23,7 @@
     "karma-spec-reporter": "0.0.26",
     "karma-webpack": "2.0.1",
     "phantomjs-prebuilt": "~2.1.14",
-    "react-addons-test-utils": "~15.6.2",
+    "react-addons-test-utils": "^15.6.2",
     "webpack-dev-server": "^2.11.1"
   },
   "scripts": {

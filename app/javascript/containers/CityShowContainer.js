@@ -12,6 +12,7 @@ class CityShowContainer extends Component {
       currentUser: ''
     }
     this.addNewReview = this.addNewReview.bind(this)
+    this.deleteReview= this.deleteReview.bind(this)
   }
 
   addNewReview(formPayload) {
@@ -73,9 +74,24 @@ class CityShowContainer extends Component {
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
+  deleteReview(id) {
+    fetch(`/api/v1/cities/${this.props.params.id}/reviews/${id}`, {
+      credentials: 'same-origin',
+      method: 'DELETE'
+    })
+    .then(response => response.json())
+    .then(body => {
+      this.setState({
+        reviews: body
+      })
+    })
+  }
+
+
   render() {
     let addNewReview = (formPayload) => this.addNewReview(formPayload)
     let reviews = this.state.reviews.map(review => {
+      let handleDelete = () => {this.deleteReview(review.id)}
       return(
         <ReviewShowTile
           key={review.id}
@@ -83,6 +99,9 @@ class CityShowContainer extends Component {
           body={review.body}
           comfort_index={review.comfort_index}
           weather_variance={review.weather_variance}
+          currentUser={this.state.currentUser}
+          creator={review.user_id}
+          handleDelete={handleDelete}
         />
       )
     })
