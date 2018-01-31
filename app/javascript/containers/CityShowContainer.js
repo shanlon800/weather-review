@@ -12,7 +12,7 @@ class CityShowContainer extends Component {
       currentUser: ''
     }
     this.addNewReview = this.addNewReview.bind(this)
-    this.deleteReview= this.deleteReview.bind(this)
+    this.deleteReview = this.deleteReview.bind(this)
   }
 
   addNewReview(formPayload) {
@@ -23,7 +23,7 @@ class CityShowContainer extends Component {
       headers: { 'Content-Type': 'application/json' }
     }).then(response => response.json())
     .then(body => {
-      let newReview = this.state.reviews.concat(body)
+      let newReview = this.state.reviews.concat(body.review)
       this.setState({reviews: newReview})
     })
   }
