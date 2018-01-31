@@ -37,12 +37,13 @@ class CitiesIndexContainer extends Component {
           city_name={city.city_name}
           state={city.state}
           description={city.description}
+          banner={city.banner}
           id={city.id}
         />
       )
     })
     return (
-      <div>
+      <div class="index">
         {cities}
       </div>
     )

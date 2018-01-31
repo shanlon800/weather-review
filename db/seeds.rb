@@ -30,7 +30,7 @@ CITIES = [
     city: "Louisville",
     state: "KY",
     user_id: User.first.id,
-    description: "literally everyone here likes whiskey."
+    description: "A large city in Kentucky"
   },
   {
     city: "Arlington",
@@ -41,19 +41,19 @@ CITIES = [
     city: "New York",
     state: "NY",
     user_id: User.first.id,
-    description: "something someting empire state"
+    description: "The largest city in the United States"
   },
   {
     city: "Detroit",
     state: "MI",
     user_id: User.first.id,
-    description: "we used to have clean water . . . and jobs"
+    description: "Home to Ford and GM"
   },
   {
     city: "Boulder",
     state: "CO",
     user_id: User.first.id,
-    description: "where people go to . . . boulder."
+    description: "Famously known for the University of Colorado at Boulder"
   }
 ]
 

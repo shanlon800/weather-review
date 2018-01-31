@@ -3,6 +3,7 @@
 <head>
   <title>WeatherReview</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
   <%= stylesheet_link_tag 'application', media: 'all' %>
 
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -17,6 +18,8 @@
         <h1><a href="/">WeatherReview</a></h1>
       </li>
     </ul>
+
+      <li><%= link_to "Add New City",  new_city_path, class: "success button" %></li>
 
     <section class="top-bar-section">
       <ul class="right">
@@ -40,10 +43,12 @@
     </div>
   <%- end -%>
 
+
   <%= yield %>
 
   <%= javascript_include_tag 'application' %>
   <%= javascript_pack_tag 'application' %>
   <%= yield :extra_footer %>
+
 </body>
 </html>
