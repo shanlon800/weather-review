@@ -6,64 +6,81 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create!(email: "email@example.com", password: "password1234")
+User.create!(email: "josh@launchacademy.com", password: "password1234")
+User.create!(email: "anthony@launchacademy.com", password: "password1234")
+User.create!(email: "sean@launchacademy.com", password: "password1234")
+User.create!(email: "aj@launchacademy.com", password: "password1234")
+User.create!(email: "sergei@launchacademy.com", password: "password1234")
 
 CITIES = [
   {
     city: "Boston",
     state: "MA",
-    user_id: User.first.id,
     description: "This is a city. It gets cold here during the winter."
   },
   {
     city: "Seattle",
     state: "WA",
-    user_id: User.first.id,
     description: "This is also a city. It doesn't get so cold here."
   },
   {
     city: "Austin",
-    state: "TX",
-    user_id: User.first.id
+    state: "TX"
   },
   {
     city: "Louisville",
     state: "KY",
-    user_id: User.first.id,
-    description: "A large city in Kentucky"
+    description: "Believe it or not, it actually snows here sometimes."
   },
   {
     city: "Arlington",
     state: "VA",
-    user_id: User.first.id
   },
   {
     city: "New York",
     state: "NY",
-    user_id: User.first.id,
-    description: "The largest city in the United States"
+    description: "something someting empire state"
   },
   {
     city: "Detroit",
     state: "MI",
-    user_id: User.first.id,
-    description: "Home to Ford and GM"
+    description: "Have you SEEN that river? "
   },
   {
     city: "Boulder",
     state: "CO",
-    user_id: User.first.id,
-    description: "Famously known for the University of Colorado at Boulder"
+    description: "where people go to . . . boulder."
+  },
+  {
+    city: "Arlington",
+    state: "TX",
+  },
+  {
+    city: "Orlando",
+    state: "FL",
+    description: "Where Florida Man lives."
+  },
+  {
+    city: "Racine",
+    state: "WI",
+    description: "Cows."
+  },
+  {
+    city: "Nashua",
+    state: "NH"
   }
 ]
 
-
 CITIES.each do |city|
-  City.create!(city_name: city[:city], state: city[:state], user_id: city[:user_id], description: city[:description])
+  City.create!(city_name: city[:city], state: city[:state], user_id: User.order("RANDOM()").first.id, description: city[:description])
 end
 
-35.times {
+45.times {
   city = City.find(id = rand(CITIES.length)+1)
   body = Faker::Lorem.paragraph
-  Review.create!(city_id: city.id, user_id: User.first.id, body: "#{body}", comfort_index: rand(5)+1, weather_variance: rand(5)+1)
+  Review.create!(city_id: city.id, user_id: User.order("RANDOM()").first.id, body: "#{body}", comfort_index: rand(5)+1, weather_variance: rand(5)+1)
 }
+
+# 100.times {
+#
+# }

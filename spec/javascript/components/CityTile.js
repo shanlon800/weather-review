@@ -21,11 +21,11 @@ describe('CityTile', () => {
   });
 
   it('should render an h3 tag', () => {
-    expect(wrapper.find('h3')).toBePresent();
+    expect(wrapper.find('h2')).toBePresent();
   });
 
-  it('should render an h3 tag with the city_name and state property', () => {
-    expect(wrapper.find('h3').text()).toBe('Brahston WA')
+  it('should render an h2 tag with the city_name and state property', () => {
+    expect(wrapper.find('h2').text()).toBe('Brahston, WA')
   })
 
   it('should render an li tag', () => {
