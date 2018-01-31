@@ -5,14 +5,20 @@
   <div id="city-form">
     <%= form_for @city,  url: {action: "create"}, html: {class: "new-city-form"} do |f| %>
 
-      <%= f.label :city_name, "Name" %>
-      <%= f.text_field :city_name %>
+      <div id="name-field">
+        <%= f.label :city_name, "Name", html: {id: "name-label"} %>
+        <%= f.text_field :city_name %>
+      </div>
 
-      <%= f.label :state, "State"  %>
-      <%= f.text_field :state  %>
+      <div id="state-field">
+        <%= f.label :state, "State", html: {class: "text-label"}  %>
+        <%= f.text_field :state  %>
+      </div>
 
-      <%= f.label :description, "Description"  %>
-      <%= f.text_area :description  %>
+      <div id="description-field">
+        <%= f.label :description, "Description", html: {class: "text-label"}  %>
+        <%= f.text_area :description %>
+      </div>
 
       <%= f.file_field :banner %>
       <%= f.hidden_field :banner_cache %>
