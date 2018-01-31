@@ -22,11 +22,22 @@ class CityShowContainer extends Component {
       method: 'POST',
       body: JSON.stringify(formPayload),
       headers: { 'Content-Type': 'application/json' }
-    }).then(response => response.json())
+    })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+            error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
     .then(body => {
       let newReview = this.state.reviews.concat(body)
       this.setState({reviews: newReview})
     })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   componentDidMount() {
@@ -81,12 +92,22 @@ class CityShowContainer extends Component {
       credentials: 'same-origin',
       method: 'DELETE'
     })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+            error = new Error(errorMessage);
+        throw(error);
+      }
+    })
     .then(response => response.json())
     .then(body => {
       this.setState({
         reviews: body
       })
     })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
 
