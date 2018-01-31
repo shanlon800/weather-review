@@ -2,7 +2,7 @@ import React from 'react';
 
 const ReviewShowTile = props => {
 
-  if (props.creator === props.currentUser) {
+  if (props.creator === props.currentUser || props.admin === true) {
     return(
       <div>
         <h5>{props.body}</h5>

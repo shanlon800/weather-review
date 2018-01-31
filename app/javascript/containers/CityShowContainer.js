@@ -9,7 +9,8 @@ class CityShowContainer extends Component {
     this.state = {
       city: [],
       reviews: [],
-      currentUser: ''
+      currentUser: '',
+      admin: false
     }
     this.addNewReview = this.addNewReview.bind(this)
     this.deleteReview= this.deleteReview.bind(this)
@@ -66,6 +67,7 @@ class CityShowContainer extends Component {
         let currentUser = body.current_user;
         if (currentUser != null) {
           this.setState({ currentUser: currentUser.id });
+          this.setState({ admin: currentUser.admin });
         } else {
           this.setState({ currentUser: null });
         }
@@ -101,11 +103,12 @@ class CityShowContainer extends Component {
           currentUser={this.state.currentUser}
           creator={review.user_id}
           handleDelete={handleDelete}
+          admin={this.state.admin}
         />
       )
     })
 
-    if (this.state.currentUser != null) {
+    if (this.state.currentUser != null ) {
       return(
         <div>
           <CityShowTile

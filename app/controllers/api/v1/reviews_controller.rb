@@ -21,7 +21,7 @@ class Api::V1::ReviewsController < ApplicationController
 
   def destroy
     review = Review.find(params[:id])
-    if current_user.id == review.user_id
+    if current_user.id == review.user_id || current_user.admin == true
       if review.destroy
         city_id = params[:city_id]
         city_reviews = Review.where(city_id: city_id)
