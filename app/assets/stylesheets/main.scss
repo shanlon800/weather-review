@@ -1,0 +1,65 @@
+@import 'elements/colors';
+@import 'elements/variables';
+@import 'elements/animations';
+@import 'elements/inheritance';
+@import 'containers/show';
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Ubuntu+Mono|Volkhov');
+
+// tags - - - - - - - - - - - - - - -
+body {
+  font-family: $fonts-sans;
+  margin: auto !important;
+  width: 65%;
+  background-color: $bg-grey !important;
+}
+
+h4, h5, h6 {
+  font-family: $fonts-sans;
+}
+
+// ids - - - - - - - - - - - - - - -
+#app {
+  background-color: #ffffff;
+  box-shadow: 0px 1px 1px $shadow-grey;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+// classes - - - - - - - - - - - - - - -
+.top-bar {
+  text-shadow: 0px 1px 1px $shadow-grey;
+  background-color: $nav-blue !important;
+  height: 2.8125rem;
+  line-height: 2.8125rem;
+  margin-bottom: 0;
+  overflow: hidden;
+  position: relative;
+
+  h1, h2, h3, h4, h5, h6, .title-area ul li, .top-bar-section ul li > a {
+    font-family: 'Open Sans', Arial, sans-serif;
+    background-color: $nav-blue;
+  }
+
+  .right li:not(.has-form) a:not(.button) {
+    background-color: $nav-blue;
+  }
+
+  .top-bar-section ul li > a:hover {
+    background-color: $hover-blue !important;
+
+  }
+}
+
+.city-container {
+  @extend %city-objects;
+}
+
+.city-container:hover {
+  background-color: $over-grey;
+}
+#addcity {
+  padding-right: 4em;
+  background: $nav-blue;
+}

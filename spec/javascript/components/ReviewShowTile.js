@@ -1,7 +1,8 @@
 import ReviewShowTile from '../../../app/javascript/components/ReviewShowTile'
 
 describe('ReviewShowTile', () => {
-  let body,
+  let id,
+  body,
   comfort_index,
   weather_variance,
   wrapper;
@@ -10,9 +11,10 @@ describe('ReviewShowTile', () => {
     jasmineEnzyme();
     wrapper = mount(
       <ReviewShowTile
+        id={2}
         body="New York is a great city to live in"
-        comfort_index="5"
-        weather_variance="2"
+        comfort_index={5}
+        weather_variance={2}
       />
     );
   });
@@ -23,18 +25,20 @@ describe('ReviewShowTile', () => {
     expect(wrapper.find('h5').text()).toBe("New York is a great city to live in");
   });
 
-  it('should render an h7 tag', () => {
-    expect(wrapper.find('h7')).toBePresent();
-  });
-  it('should render an h7 tag with the comfort index', () => {
-    expect(wrapper.find('h7').text()).toBe("Comfort Index: 5");
+  it('should render a p tag with and id of comfort-index-2', () => {
+    expect(wrapper.find('p#comfort-index-2')).toBePresent();
   });
 
-  it('should render a p tag', () => {
-    expect(wrapper.find('h7')).toBePresent();
-  });
-  it('should render a p tag with the comfort index', () => {
-    expect(wrapper.find('p').text()).toBe("Weather Variance: 2");
+  it('should render a p tag with and id of variance-index-2', () => {
+    expect(wrapper.find('p#variance-index-2')).toBePresent();
   });
 
+  it('should render icons, one with a class of "rc-5"', () => {
+    expect(wrapper.find('i.rc-5')).toBePresent();
+  });
+
+  it('should render icons, one with a class of "rv-2" as well as at least one empty square.', () => {
+    expect(wrapper.find('i.rv-2')).toBePresent();
+    expect(wrapper.find('i.fa-square-o')).toBePresent();
+  });
 });

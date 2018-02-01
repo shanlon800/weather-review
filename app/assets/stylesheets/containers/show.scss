@@ -1,0 +1,63 @@
+.city-head {
+  @extend %city-objects;
+}
+
+.review-container {
+  background-color: $over-grey;
+  padding: 15px;
+  margin: 15px;
+  border-radius: 10px;
+  font-family: $fonts-sans;
+
+  h5 {
+    margin: 0;
+  }
+
+  .rating {
+    i {
+      padding: 0 1px;
+    }
+    .fa-star-o, .fa-square-o {
+      color: $shadow-grey;
+    }
+    .fa-star, .fa-square {
+      text-shadow: 0 .5px 1px $shadow-grey;
+    }
+
+    .rc-1 {
+      color: $rc-1;
+    }
+    .rc-2 {
+      color: $rc-2;
+    }
+    .rc-3 {
+      color: $rc-3;
+    }
+    .rc-4 {
+      color: $rc-4;
+    }
+    .rc-5 {
+      color: $rc-5;
+    }
+
+    .rv-1 {
+      color: $rv-1;
+    }
+    .rv-2 {
+      color: $rv-2;
+    }
+    .rv-3 {
+      color: $rv-3;
+    }
+    .rv-4 {
+      color: $rv-4;
+    }
+    .rv-5 {
+      color: $rv-5;
+    }
+  }
+}
+
+.votes {
+  text-align: center;
+}

@@ -9,10 +9,11 @@ class CityShowContainer extends Component {
     this.state = {
       city: [],
       reviews: [],
-      currentUser: ''
+      currentUser: '',
+      admin: false
     }
     this.addNewReview = this.addNewReview.bind(this)
-    this.deleteReview= this.deleteReview.bind(this)
+    this.deleteReview = this.deleteReview.bind(this)
   }
 
   addNewReview(formPayload) {
@@ -21,11 +22,22 @@ class CityShowContainer extends Component {
       method: 'POST',
       body: JSON.stringify(formPayload),
       headers: { 'Content-Type': 'application/json' }
-    }).then(response => response.json())
+    })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+            error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
     .then(body => {
-      let newReview = this.state.reviews.concat(body)
+      let newReview = this.state.reviews.concat(body.review)
       this.setState({reviews: newReview})
     })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   componentDidMount() {
@@ -66,6 +78,7 @@ class CityShowContainer extends Component {
         let currentUser = body.current_user;
         if (currentUser != null) {
           this.setState({ currentUser: currentUser.id });
+          this.setState({ admin: currentUser.admin });
         } else {
           this.setState({ currentUser: null });
         }
@@ -79,12 +92,22 @@ class CityShowContainer extends Component {
       credentials: 'same-origin',
       method: 'DELETE'
     })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+            error = new Error(errorMessage);
+        throw(error);
+      }
+    })
     .then(response => response.json())
     .then(body => {
       this.setState({
-        reviews: body
+        reviews: body.reviews
       })
     })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
 
@@ -92,20 +115,23 @@ class CityShowContainer extends Component {
     let addNewReview = (formPayload) => this.addNewReview(formPayload)
     let reviews = this.state.reviews.map(review => {
       let handleDelete = () => {this.deleteReview(review.id)}
+
       return(
         <ReviewShowTile
           key={review.id}
+          id={review.id}
           body={review.body}
           comfort_index={review.comfort_index}
           weather_variance={review.weather_variance}
           currentUser={this.state.currentUser}
           creator={review.user_id}
           handleDelete={handleDelete}
+          admin={this.state.admin}
         />
       )
     })
 
-    if (this.state.currentUser != null) {
+    if (this.state.currentUser != null ) {
       return(
         <div>
           <CityShowTile

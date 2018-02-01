@@ -17,15 +17,17 @@
       <li class="name">
         <h1><a href="/">WeatherReview</a></h1>
       </li>
+
     </ul>
 
-      <li><%= link_to "Add New City",  new_city_path, class: "success button" %></li>
+
 
     <section class="top-bar-section">
       <ul class="right">
+        <li id="addcity"><%= link_to "Add New City",  new_city_path, class: "success button" %></li>
         <%- if current_user -%>
         <% if current_user.avatar.url.present? %>
-          <li><%= image_tag(current_user.avatar.url) %></li>
+          <li id="avatar"><%= image_tag(current_user.avatar.url) %></li>
         <% end %>
           <li><%= link_to 'Profile', edit_user_registration_path %></li>
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
