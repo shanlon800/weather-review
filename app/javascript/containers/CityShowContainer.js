@@ -37,7 +37,20 @@ class CityShowContainer extends Component {
     .then(response => response.json())
     .then(body => {
       let newReview = this.state.reviews.concat(body.review)
-      this.setState({reviews: newReview})
+      let comfortTotal = 0
+      let varianceTotal = 0
+      newReview.forEach( review => {
+        comfortTotal += review.comfort_index
+        varianceTotal += review.weather_variance
+      })
+      let totalReviews = newReview.length
+      let averageComfort = Math.round(comfortTotal / totalReviews)
+      let averageVariance = Math.round(varianceTotal / totalReviews)
+      this.setState({
+        reviews: newReview,
+        averageComfort: averageComfort,
+        averageVariance: averageVariance
+      })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
@@ -154,7 +167,6 @@ class CityShowContainer extends Component {
             currentUserId={this.state.currentUser}
             cityCreator={this.state.city.user_id}
             cityId={this.state.city.id}
-            banner={this.state.city.banner}
             averageComfort={this.state.averageComfort}
             averageVariance={this.state.averageVariance}
           />
@@ -176,6 +188,8 @@ class CityShowContainer extends Component {
             currentUserId={this.state.currentUser}
             cityCreator={this.state.city.user_id}
             cityId={this.state.city.id}
+            averageComfort={this.state.averageComfort}
+            averageVariance={this.state.averageVariance}
           />
           {reviews}
         </div>
