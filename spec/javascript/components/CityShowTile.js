@@ -16,8 +16,8 @@ describe('CityShowTile', () => {
         city_name="New York"
         state="NY"
         description="Concrete Jungle where dreams are made of"
-        currentUserId="8"
-        cityCreator="8"
+        currentUserId={8}
+        cityCreator={8}
       />
     );
   });
@@ -53,8 +53,8 @@ describe('CityShowTile', () => {
   it('should not render the edit button if the current user did not add the city', ()=> {
     wrapper2 = mount(
       <CityShowTile
-        currentUserId="6"
-        cityCreator="8"
+        currentUserId={6}
+        cityCreator={8}
       />);
     expect(wrapper2.find('a').exists()).toEqual(false);
   });

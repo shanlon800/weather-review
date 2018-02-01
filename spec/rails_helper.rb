@@ -6,6 +6,7 @@ require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 require 'shoulda-matchers'
+require 'launchy'
 require File.join(File.dirname(__FILE__), 'support/valid_attribute')
 require 'capybara/rspec'
 # Add additional requires below this line. Rails is not loaded until this point!
