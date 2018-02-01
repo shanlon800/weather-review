@@ -3,9 +3,7 @@ require 'rails_helper'
 
 
 feature 'user can edit a city they have added' do
-  # user_1 = User.create!(email: 'user5@example.com', password: 'password2')
-  # city_one = City.create!(city_name: "Banana Stand", state: "CA", description: "There's always money..", user_id: user_1.id)
-  # city_one.user_id = user_1.id
+
   let!(:user_2) { User.create!(email: "email2@example.com", password: "password1")}
   let!(:city_one) {City.create!(city_name: "Banana Stand", state: "CA", description: "There's always money..", user_id: user_2.id)}
 

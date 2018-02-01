@@ -3,7 +3,7 @@ require 'carrierwave/test/matchers'
 
 
 feature "user can add city" do
-  User.create(email: 'user4@example.com', password: 'password2')
+  let!(:user1) {User.create!(email: 'user4@example.com', password: 'password2')}
 
   scenario "user adds new city successfully" do
 
