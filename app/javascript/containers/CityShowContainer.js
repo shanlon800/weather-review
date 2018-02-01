@@ -138,6 +138,9 @@ class CityShowContainer extends Component {
             city_name={this.state.city.city_name}
             state={this.state.city.state}
             description={this.state.city.description}
+            currentUserId={this.state.currentUser}
+            cityCreator={this.state.city.user_id}
+            cityId={this.state.city.id}
           />
           <ReviewFormContainer
             id={this.props.params.id}
@@ -154,6 +157,9 @@ class CityShowContainer extends Component {
             city_name={this.state.city.city_name}
             state={this.state.city.state}
             description={this.state.city.description}
+            currentUserId={this.state.currentUser}
+            cityCreator={this.state.city.user_id}
+            cityId={this.state.city.id}
           />
           {reviews}
         </div>
