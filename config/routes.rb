@@ -20,5 +20,6 @@ Rails.application.routes.draw do
   end
 
   resources :cities, only: [:new, :create, :index, :edit, :update]
+  resources :users, only: [:index, :update, :destroy]
 
 end
