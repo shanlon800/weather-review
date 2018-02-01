@@ -10,7 +10,9 @@ class CityShowContainer extends Component {
       city: [],
       reviews: [],
       currentUser: '',
-      admin: false
+      admin: false,
+      averageComfort: 0,
+      averageVariance: 0
     }
     this.addNewReview = this.addNewReview.bind(this)
     this.deleteReview = this.deleteReview.bind(this)
@@ -54,9 +56,20 @@ class CityShowContainer extends Component {
     .then(response => response.json())
     .then(body => {
       let newCity = body;
+      let comfortTotal = 0
+      let varianceTotal = 0
+      newCity.reviews.forEach( review => {
+        comfortTotal += review.comfort_index
+        varianceTotal += review.weather_variance
+      })
+      let totalReviews = newCity.reviews.length
+      let averageComfort = Math.round(comfortTotal / totalReviews)
+      let averageVariance = Math.round(varianceTotal / totalReviews)
       this.setState({
         city: newCity.city,
-        reviews: newCity.reviews
+        reviews: newCity.reviews,
+        averageComfort: averageComfort,
+        averageVariance: averageVariance
       });
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
@@ -110,11 +123,11 @@ class CityShowContainer extends Component {
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
-
   render() {
     let addNewReview = (formPayload) => this.addNewReview(formPayload)
     let reviews = this.state.reviews.map(review => {
-      let handleDelete = () => {this.deleteReview(review.id)}
+        let handleDelete = () => {this.deleteReview(review.id)
+      }
 
       return(
         <ReviewShowTile
@@ -141,6 +154,9 @@ class CityShowContainer extends Component {
             currentUserId={this.state.currentUser}
             cityCreator={this.state.city.user_id}
             cityId={this.state.city.id}
+            banner={this.state.city.banner}
+            averageComfort={this.state.averageComfort}
+            averageVariance={this.state.averageVariance}
           />
           <ReviewFormContainer
             id={this.props.params.id}
