@@ -1,0 +1,17 @@
+
+<%= form_for @city, html: {class: "new-city-form"} do |f| %>
+
+  <%= f.label :city_name, "Name" %>
+  <%= f.text_field :city_name %>
+
+  <%= f.label :state, "State"  %>
+  <%= f.text_field :state  %>
+
+  <%= f.label :description, "Description"  %>
+  <%= f.text_area :description  %>
+
+  <%= f.file_field :banner %>
+  <%= f.hidden_field :banner_cache %>
+
+  <%= f.submit 'Submit', class: "success button"  %>
+<% end %>

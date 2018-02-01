@@ -1,29 +1,4 @@
 <%= link_to 'Back', cities_path, class: "warning button" %>
-<div id="form-body">
-<h1 class="submit-new">Add New City</h1>
+<h1 class="submit-new">Add A New City</h1>
 
-  <div id="city-form">
-    <%= form_for @city,  url: {action: "create"}, html: {class: "new-city-form"} do |f| %>
-
-      <div id="name-field">
-        <%= f.label :city_name, "Name", html: {id: "name-label"} %>
-        <%= f.text_field :city_name %>
-      </div>
-
-      <div id="state-field">
-        <%= f.label :state, "State", html: {class: "text-label"}  %>
-        <%= f.text_field :state  %>
-      </div>
-
-      <div id="description-field">
-        <%= f.label :description, "Description", html: {class: "text-label"}  %>
-        <%= f.text_area :description %>
-      </div>
-
-      <%= f.file_field :banner %>
-      <%= f.hidden_field :banner_cache %>
-
-      <%= f.submit 'Add City', class: "success button"  %>
-    <% end %>
-  </div>
-</div>
+<%= render 'form' %>

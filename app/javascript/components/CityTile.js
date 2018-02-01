@@ -5,7 +5,7 @@ const CityTile = props => {
   if (props.banner.url != null ){
 
     return(
-      <div className="cityContainer">
+      <div className="city-container">
         <Link to={`/cities/${props.id}`}>
           <h2 className="namestate">{props.city_name}, {props.state}</h2>
           <li className="description">{props.description}</li>
@@ -15,7 +15,7 @@ const CityTile = props => {
     )
   } else {
     return(
-      <div className="cityContainer">
+      <div className="city-container">
         <Link to={`/cities/${props.id}`}>
           <h2 className="namestate">{props.city_name}, {props.state}</h2>
           <li className="description">{props.description}</li>

@@ -53,10 +53,19 @@ h4, h5, h6 {
   }
 }
 
-.cityContainer {
+.city-container {
   @extend %city-objects;
 }
 
-.cityContainer:hover {
+.city-container:hover {
   background-color: $over-grey;
+}
+
+#addcity {
+  padding-right: 4em;
+  background: $nav-blue;
+}
+
+.flash {
+  font-family: $fonts-sans;
 }

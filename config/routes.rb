@@ -7,9 +7,10 @@ Rails.application.routes.draw do
   get '/cities/new' => 'new_city_path'
   get '/cities/:id' => 'static_pages#index'
 
+
   namespace :api do
     namespace :v1 do
-      resources :cities, only: [:index, :show, :create] do
+      resources :cities, only: [:index, :show, :create, :edit, :update] do
         resources :reviews, only: [:index, :destroy]
       end
 
@@ -18,6 +19,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :cities, only: [:new, :create, :index]
+  resources :cities, only: [:new, :create, :index, :edit, :update]
 
 end
