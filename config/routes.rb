@@ -10,11 +10,14 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :cities, only: [:index, :show, :create] do
-        resources :reviews, only: [:index, :destroy]
+        resources :reviews, only: [:index, :destroy] do
+          resources :votes, only: [:index]
+        end
       end
 
       resources :reviews, only: [:create, :destroy]
       resources :users, only: [:index]
+      resources :votes, only: [:create, :update]
     end
   end
 

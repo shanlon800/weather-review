@@ -87,7 +87,6 @@ class CityShowContainer extends Component {
     })
   }
 
-
   render() {
     let addNewReview = (formPayload) => this.addNewReview(formPayload)
     let reviews = this.state.reviews.map(review => {
@@ -96,10 +95,13 @@ class CityShowContainer extends Component {
         <ReviewShowTile
           key={review.id}
           id={review.id}
+          city_id={review.city_id}
           body={review.body}
           comfort_index={review.comfort_index}
           weather_variance={review.weather_variance}
           currentUser={this.state.currentUser}
+          upvotes={review.upvotes}
+          downvotes={review.downvotes}
           creator={review.user_id}
           handleDelete={handleDelete}
         />

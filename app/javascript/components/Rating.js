@@ -42,9 +42,10 @@ class Rating extends Component {
 
   render() {
     let faIconType;
-    if (this.props.rateType == 'comfort') {
+    let type = this.props.rateType;
+    if (type == 'comfort') {
       faIconType = 'star';
-    } else if (this.props.rateType == 'variance') {
+    } else if (type == 'variance') {
       faIconType = 'square';
     }
     let iconEmpty = `fa fa-${faIconType}-o`;
@@ -61,21 +62,23 @@ class Rating extends Component {
     let rating = source;
 
     for (var i = 0; i < rating; i++) {
-      iconArray[i] = iconFull;
+      iconArray[i] = iconFull + ` r${type[0]}-${i+1}`;
     }
     for (var i = 0; i < 5-rating; i++) {
       iconArray.push(iconEmpty);
     }
-    
+
     return (
-      <div onMouseOut={this.handleMouseOut} className='rate-this'>
-        <label>{this.props.label}</label>
-        <i id='1' onClick={this.handleClick} onMouseOver={this.handleHover} className={iconArray[0]} />
-        <i id='2' onClick={this.handleClick} onMouseOver={this.handleHover} className={iconArray[1]} />
-        <i id='3' onClick={this.handleClick} onMouseOver={this.handleHover} className={iconArray[2]} />
-        <i id='4' onClick={this.handleClick} onMouseOver={this.handleHover} className={iconArray[3]} />
-        <i id='5' onClick={this.handleClick} onMouseOver={this.handleHover} className={iconArray[4]} />
-      </div>
+      <span onMouseOut={this.handleMouseOut}>
+        <label>{this.props.label}:</label>
+        <span>
+          <i id='1' onClick={this.handleClick} onMouseOver={this.handleHover} className={iconArray[0]} />
+          <i id='2' onClick={this.handleClick} onMouseOver={this.handleHover} className={iconArray[1]} />
+          <i id='3' onClick={this.handleClick} onMouseOver={this.handleHover} className={iconArray[2]} />
+          <i id='4' onClick={this.handleClick} onMouseOver={this.handleHover} className={iconArray[3]} />
+          <i id='5' onClick={this.handleClick} onMouseOver={this.handleHover} className={iconArray[4]} />
+        </span>
+      </span>
     )
   };
 }

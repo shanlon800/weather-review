@@ -1,38 +1,39 @@
 import React from 'react';
 import ShowRating from './ShowRating';
+import VoteTile from './VoteTile';
 
 const ReviewShowTile = props => {
   let comfortTagId = `comfort-index-${props.id}`;
   let varianceTagId = `variance-index-${props.id}`;
   let comfortKey = `${props.id}${props.comfort_index}`;
   let varianceKey = `${props.id}${props.weather_variance}`;
-
   return(
     <div className='review-container'>
       <span className='review-details' id={props.id}>
-        <h5>{props.body}</h5>
         <div className='rating'>
-          <p id={comfortTagId}>
+          <span id={comfortTagId}>
             Comfort Index: <ShowRating
               key={comfortKey}
               type="comfort"
               value={props.comfort_index}
             />
-          </p>
-          <p id={varianceTagId}>
+          </span>
+          <span id={varianceTagId}>
             Weather Variance:  <ShowRating
               key={varianceKey}
               type="variance"
               value={props.weather_variance}
             />
-          </p>
+          </span>
         </div>
+        <h5>{props.body}</h5>
       </span>
-      <span className='votes'>
-        <div><i className='fa fa-chevron-up'></i></div>
-        <div>•</div>
-        <div><i className='fa fa-chevron-down'></i></div>
-      </span>
+      <VoteTile
+        key={props.id}
+        currentUser={props.currentUser}
+        cityId={props.city_id}
+        reviewId={props.id}
+      />
     </div>
   )
 }
