@@ -68,3 +68,11 @@ h4, h5, h6 {
 .flash {
   font-family: $fonts-sans;
 }
+button.secondary, .button.secondary {
+    background-color: #e7e7e7;
+    border-color: #b9b9b9;
+    color: #333333;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    position: sticky;
+    right: 60rem;
+}

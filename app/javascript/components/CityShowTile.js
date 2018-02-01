@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import BackButton from './BackButton';
 
 const CityShowTile = props => {
   let editButton;
@@ -9,6 +10,7 @@ const CityShowTile = props => {
 
   return(
     <div className='city-head'>
+    <BackButton/>
       <h1>{props.city_name} {props.state}</h1>
       <p id="show-description">{props.description}</p>
 
