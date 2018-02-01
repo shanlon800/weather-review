@@ -14,6 +14,7 @@ class CityShowContainer extends Component {
     }
     this.addNewReview = this.addNewReview.bind(this)
     this.deleteReview = this.deleteReview.bind(this)
+    this.deleteCity = this.deleteCity.bind(this)
   }
 
   addNewReview(formPayload) {
@@ -45,12 +46,15 @@ class CityShowContainer extends Component {
     .then(response => {
       if (response.ok) {
         return response;
+      } else if (response.status === 404) {
+          window.location.href = '/cities'
       } else {
         let errorMessage = `${response.status} (${response.statusText})`,
         error = new Error(errorMessage);
         throw(error);
       }
     })
+
     .then(response => response.json())
     .then(body => {
       let newCity = body;
@@ -110,6 +114,24 @@ class CityShowContainer extends Component {
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
+  deleteCity() {
+    fetch(`/api/v1/cities/${this.props.params.id}`, {
+      credentials: 'same-origin',
+      method: 'DELETE'
+    })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+            error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+
+    window.location.href = '/cities'
+  }
+
 
   render() {
     let addNewReview = (formPayload) => this.addNewReview(formPayload)
@@ -141,6 +163,8 @@ class CityShowContainer extends Component {
             currentUserId={this.state.currentUser}
             cityCreator={this.state.city.user_id}
             cityId={this.state.city.id}
+            admin={this.state.admin}
+            cityDelete={this.deleteCity}
           />
           <ReviewFormContainer
             id={this.props.params.id}

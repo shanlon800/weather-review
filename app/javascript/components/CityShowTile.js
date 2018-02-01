@@ -3,7 +3,12 @@ import { Link } from 'react-router';
 
 const CityShowTile = props => {
   let editButton;
+  let deleteButton;
   if (props.currentUserId === props.cityCreator) {
+    editButton =  <a href={`/cities/${props.cityId}/edit`} className='button'>Edit</a>
+  };
+  if (props.admin) {
+    deleteButton = <button className='alert button' onClick={props.cityDelete}>Delete</button>
     editButton =  <a href={`/cities/${props.cityId}/edit`} className='button'>Edit</a>
   };
 
@@ -18,7 +23,7 @@ const CityShowTile = props => {
       <div id="variance-average">
         <p>Placeholder: Variance Average</p>
       </div>
-      {editButton}
+      {editButton} {deleteButton}
     </div>
   )
 }
