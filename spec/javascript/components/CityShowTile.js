@@ -18,6 +18,8 @@ describe('CityShowTile', () => {
         description="Concrete Jungle where dreams are made of"
         currentUserId={8}
         cityCreator={8}
+        averageComfort={2}
+        averageVariance={4}
       />
     );
   });
@@ -39,11 +41,11 @@ describe('CityShowTile', () => {
   });
 
   it('should render a div with an id of comfort-average with the comfort average text', () => {
-    expect(wrapper.find('#comfort-average')).toHaveText("Placeholder: Comfort Average");
+    expect(wrapper.find('#comfort-average').text()).toBe("Average Comfort Index: 2");
   });
 
   it('should render a div with an id of variance-average with the comfort average text', () => {
-    expect(wrapper.find('#variance-average')).toHaveText("Placeholder: Variance Average");
+    expect(wrapper.find('#variance-average').text()).toBe("Average Weather Variance: 4");
   });
 
   it('should render an edit button if the current user is the user who added th city', () => {
