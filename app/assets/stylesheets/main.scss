@@ -59,7 +59,12 @@ h4, h5, h6 {
 .city-container:hover {
   background-color: $over-grey;
 }
+
 #addcity {
   padding-right: 4em;
   background: $nav-blue;
+}
+
+.flash {
+  font-family: $fonts-sans;
 }
