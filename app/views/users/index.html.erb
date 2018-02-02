@@ -1,0 +1,16 @@
+<h1>Admin Page</h1>
+<% if current_user.admin == true %>
+  <% @users.each do |user| %>
+    <div>
+      <%= user.email %>
+      <%= button_to "delete", user, :method => :delete, id: "delete-#{user.id}" %>
+      <%= form_for user do |f| %>
+        <%= f.label :admin, "Admin" %>
+        <%= f.collection_radio_buttons :admin, @admin_collection, :first, :last, {id: "radio-#{user.id}"}%>
+        <%= f.submit 'Submit' %>
+      <% end %>
+    </div>
+  <% end %>
+<% else %>
+  <h1>404</h1>
+<% end %>

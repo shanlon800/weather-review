@@ -9,7 +9,8 @@ class CityShowContainer extends Component {
     this.state = {
       city: [],
       reviews: [],
-      currentUser: ''
+      currentUser: '',
+      admin: false
     }
     this.addNewReview = this.addNewReview.bind(this)
     this.deleteReview = this.deleteReview.bind(this)
@@ -21,11 +22,22 @@ class CityShowContainer extends Component {
       method: 'POST',
       body: JSON.stringify(formPayload),
       headers: { 'Content-Type': 'application/json' }
-    }).then(response => response.json())
+    })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+            error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
     .then(body => {
       let newReview = this.state.reviews.concat(body.review)
       this.setState({reviews: newReview})
     })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   componentDidMount() {
@@ -66,6 +78,7 @@ class CityShowContainer extends Component {
         let currentUser = body.current_user;
         if (currentUser != null) {
           this.setState({ currentUser: currentUser.id });
+          this.setState({ admin: currentUser.admin });
         } else {
           this.setState({ currentUser: null });
         }
@@ -79,18 +92,29 @@ class CityShowContainer extends Component {
       credentials: 'same-origin',
       method: 'DELETE'
     })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+            error = new Error(errorMessage);
+        throw(error);
+      }
+    })
     .then(response => response.json())
     .then(body => {
       this.setState({
-        reviews: body
+        reviews: body.reviews
       })
     })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   render() {
     let addNewReview = (formPayload) => this.addNewReview(formPayload)
     let reviews = this.state.reviews.map(review => {
       let handleDelete = () => {this.deleteReview(review.id)}
+
       return(
         <ReviewShowTile
           key={review.id}
@@ -104,17 +128,21 @@ class CityShowContainer extends Component {
           downvotes={review.downvotes}
           creator={review.user_id}
           handleDelete={handleDelete}
+          admin={this.state.admin}
         />
       )
     })
 
-    if (this.state.currentUser != null) {
+    if (this.state.currentUser != null ) {
       return(
         <div>
           <CityShowTile
             city_name={this.state.city.city_name}
             state={this.state.city.state}
             description={this.state.city.description}
+            currentUserId={this.state.currentUser}
+            cityCreator={this.state.city.user_id}
+            cityId={this.state.city.id}
           />
           <ReviewFormContainer
             id={this.props.params.id}
@@ -131,6 +159,9 @@ class CityShowContainer extends Component {
             city_name={this.state.city.city_name}
             state={this.state.city.state}
             description={this.state.city.description}
+            currentUserId={this.state.currentUser}
+            cityCreator={this.state.city.user_id}
+            cityId={this.state.city.id}
           />
           {reviews}
         </div>

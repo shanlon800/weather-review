@@ -23,6 +23,9 @@
 
     <section class="top-bar-section">
       <ul class="right">
+        <% if user_signed_in? && current_user.admin == true %>
+          <span id="admin-button"><%= link_to "Admin Page", users_path, class: "success button" %></span>
+        <% end %>
         <li id="addcity"><%= link_to "Add New City",  new_city_path, class: "success button" %></li>
         <%- if current_user -%>
         <% if current_user.avatar.url.present? %>

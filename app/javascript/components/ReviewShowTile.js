@@ -7,6 +7,10 @@ const ReviewShowTile = props => {
   let varianceTagId = `variance-index-${props.id}`;
   let comfortKey = `${props.id}${props.comfort_index}`;
   let varianceKey = `${props.id}${props.weather_variance}`;
+  let deleteButton = '';
+  if (props.creator === props.currentUser || props.admin === true) {
+    deleteButton = <button onClick={props.handleDelete} className='alert'>Delete</button>
+  }
   return(
     <div className='review-container'>
       <span className='review-details' id={props.id}>
@@ -34,6 +38,7 @@ const ReviewShowTile = props => {
         cityId={props.city_id}
         reviewId={props.id}
       />
+      {deleteButton}
     </div>
   )
 }

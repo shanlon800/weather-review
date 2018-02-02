@@ -16,17 +16,3 @@
  *= require main
  *= require foundation_and_overrides
  */
-#avatar {
-   background-color: #0053a0;
-}
- #avatar img {
-   width: 40px;
-   height: 41px;
-   margin-top: 2px;
-   border: 1px solid white;
- }
-
- a img {
-     width: 17%;
-     height: 20%;
- }

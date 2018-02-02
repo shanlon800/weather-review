@@ -1,0 +1,29 @@
+
+<div id="city-form">
+  <%= form_for @city, html: {class: "new-city-form"} do |f| %>
+
+    <div id="name-field">
+      <%= f.label :city_name, "Name" %>
+      <%= f.text_field :city_name %>
+    </div>
+
+    <div id="state-field">
+      <%= f.label :state, "State"  %>
+      <%= f.text_field :state  %>
+    </div>
+
+    <div id="description-field">
+      <%= f.label :description, "Description"  %>
+      <%= f.text_area :description  %>
+    </div>
+
+    <div id="banner-field">
+      <%= f.file_field :banner %>
+      <%= f.hidden_field :banner_cache %>
+    </div>
+
+    <div id="new-city-button">
+      <%= f.submit 'Submit', class: "success button"  %>
+    </div>
+  <% end %>
+</div>

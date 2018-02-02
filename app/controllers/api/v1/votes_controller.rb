@@ -21,8 +21,33 @@ class Api::V1::VotesController < ApplicationController
     end
   end
 
-  def edit
-    binding.pry
+  def update
+    if current_user != nil
+      vote = Vote.find(params[:id])
+      old_vote = vote.vote
+      vote.vote = params[:vote]
+      if vote.save
+        render json: { new: vote, old: old_vote }
+      else
+        render json: { error: vote.errors.full_messages }, status: :unprocessable_entity
+      end
+    else
+      render json: { errors: "Access Denied" }, status: 401
+    end
+  end
+
+  def destroy
+    if current_user != nil
+      vote = Vote.find(params[:id])
+      old_vote = vote.vote
+      if vote.destroy
+        render json: { vote: 0, old: old_vote }
+      else
+        render errors
+      end
+    else
+      render json: { errors: "Access denied!" }, status: 401
+    end
   end
 
   private

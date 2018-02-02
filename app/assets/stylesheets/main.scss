@@ -3,6 +3,7 @@
 @import 'elements/animations';
 @import 'elements/inheritance';
 @import 'containers/show';
+@import 'containers/city-form';
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Ubuntu+Mono|Volkhov');
 
 // tags - - - - - - - - - - - - - - -
@@ -59,7 +60,36 @@ h4, h5, h6 {
 .city-container:hover {
   background-color: $over-grey;
 }
+
 #addcity {
   padding-right: 4em;
   background: $nav-blue;
 }
+
+.flash {
+  font-family: $fonts-sans;
+}
+
+button.secondary, .button.secondary {
+    background-color: #e7e7e7;
+    border-color: #b9b9b9;
+    color: #333333;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    position: sticky;
+    right: 60rem;
+}
+
+#avatar {
+   background-color: #0053a0;
+}
+ #avatar img {
+   width: 40px;
+   height: 41px;
+   margin-top: 2px;
+   border: 1px solid white;
+ }
+
+ a img {
+     width: 17%;
+     height: 20%;
+ }
