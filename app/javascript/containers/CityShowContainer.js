@@ -199,6 +199,7 @@ class CityShowContainer extends Component {
             cityDelete={this.deleteCity}
             averageComfort={this.state.averageComfort}
             averageVariance={this.state.averageVariance}
+            banner={this.state.city.banner}
           />
           <ReviewFormContainer
             id={this.props.params.id}
@@ -220,6 +221,7 @@ class CityShowContainer extends Component {
             cityId={this.state.city.id}
             averageComfort={this.state.averageComfort}
             averageVariance={this.state.averageVariance}
+            banner={this.state.city.banner.banner}
           />
           {reviews}
         </div>
