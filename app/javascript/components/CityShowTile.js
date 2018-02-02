@@ -13,21 +13,43 @@ const CityShowTile = props => {
     editButton =  <a href={`/cities/${props.cityId}/edit`} className='button'>Edit</a>
   };
 
-  return(
-    <div className='city-head'>
-    <BackButton/>
+  if (props.banner != null) {
+    return(
+      <div className='city-head'>
+        <BackButton/>
+        <img className="show-banner" src={props.banner.url} />
+        <h1>{props.city_name} {props.state}</h1>
+        <p id="show-description">{props.description}</p>
+
+        <div id="comfort-average">
+          <h7>Average Comfort Index: {props.averageComfort}</h7>
+        </div>
+        <div id="variance-average">
+          <p>Average Weather Variance: {props.averageVariance}</p>
+        </div>
+        {editButton} {deleteButton}
+      </div>
+    )
+
+
+  } else {
+    return(
+      <div className='city-head'>
+      <BackButton/>
       <h1>{props.city_name} {props.state}</h1>
       <p id="show-description">{props.description}</p>
 
       <div id="comfort-average">
-        <h7>Average Comfort Index: {props.averageComfort}</h7>
+      <h7>Average Comfort Index: {props.averageComfort}</h7>
       </div>
       <div id="variance-average">
-        <p>Average Weather Variance: {props.averageVariance}</p>
+      <p>Average Weather Variance: {props.averageVariance}</p>
       </div>
       {editButton} {deleteButton}
-    </div>
-  )
+      </div>
+    )
+
+  }
 }
 
 export default CityShowTile;
