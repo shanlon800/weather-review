@@ -14,20 +14,29 @@ const CityShowTile = props => {
   };
 
   if (props.banner != null) {
+
+    var divStyle = {
+      color: "black",
+      backgroundImage: 'url(' + props.banner.url + ')'
+
+    };
     return(
-      <div className='city-head'>
+
+      <div className='city-head' style={divStyle}>
         <BackButton/>
-        <img className="show-banner" src={props.banner.url} />
-        <h1>{props.city_name} {props.state}</h1>
-        <p id="show-description">{props.description}</p>
+        <div style={divStyle}> </div>
+        <h1 className="white-text">{props.city_name} {props.state}</h1>
+        <p className="white-text">{props.description}</p>
 
         <div id="comfort-average">
-          <h7>Average Comfort Index: {props.averageComfort}</h7>
+          <h7 className="white-text">Average Comfort Index: {props.averageComfort}</h7>
         </div>
         <div id="variance-average">
-          <p>Average Weather Variance: {props.averageVariance}</p>
+          <p className="white-text">Average Weather Variance: {props.averageVariance}</p>
         </div>
         {editButton} {deleteButton}
+        <div className="white-box">
+        </div>
       </div>
     )
 
@@ -52,4 +61,5 @@ const CityShowTile = props => {
   }
 }
 
+// <img className="show-banner" src={props.banner.url} />
 export default CityShowTile;

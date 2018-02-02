@@ -26,7 +26,9 @@ class CitiesController < ApplicationController
   def edit
     @city = City.find(params[:id])
     if user_signed_in?
-      if @city.user_id != current_user.id
+      if current_user.admin == true
+        @city
+      elsif @city.user_id != current_user.id
         flash[:notice] = "You are not allowed to edit this city!"
         redirect_to city_path(@city.id)
       else
