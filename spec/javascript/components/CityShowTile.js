@@ -28,7 +28,7 @@ describe('CityShowTile', () => {
     expect(wrapper.find('h1')).toBePresent();
   });
   it('should render an h1 tag with city name and state property', () => {
-    expect(wrapper.find('h1').text()).toBe("New York, NY");
+    expect(wrapper.find('h1').text()).toBe("New York NY");
   });
 
   it('should render a div with a show-description id with the description text', () => {

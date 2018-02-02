@@ -26,7 +26,7 @@ const CityShowTile = props => {
         <BackButton/>
         <div style={divStyle}> </div>
         <h1 className="white-text">{props.city_name} {props.state}</h1>
-        <p className="white-text">{props.description}</p>
+        <p id="show-description" className="white-text">{props.description}</p>
 
         <div id="comfort-average">
           <h7 className="white-text">Average Comfort Index: {props.averageComfort}</h7>
