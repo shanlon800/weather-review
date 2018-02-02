@@ -32,9 +32,15 @@
     padding: 0 10px;
   }
 
+  .icontainer {
+    padding: 0;
+    width: 15px;
+  }
+
   i {
-    padding: 0 1px;
+    padding: 0;
     margin: 0 2px;
+    font-size: 1.5rem;
   }
 
   .fa-star-o, .fa-square-o {
@@ -43,6 +49,7 @@
 
   .fa-star, .fa-square {
     text-shadow: 0 .5px 1px $shadow-grey;
+
   }
 
   .rc-1 { color: $rc-1; }

@@ -14,7 +14,7 @@ class VoteTile extends Component {
   }
 
   componentDidMount(){
-    fetch(`/api/v1/cities/${this.props.cityId}/reviews/${this.props.reviewId}/votes`)
+    fetch(`/api/v1/reviews/${this.props.reviewId}/votes`)
     .then(response => {
       if (response.ok) {
         return response;
@@ -88,10 +88,10 @@ class VoteTile extends Component {
     let estApi;
     let fetchMethod;
 
-    let votePayload = {
+    let votePayload = {vote: {
       user_id: this.props.currentUser,
       review_id: this.props.reviewId,
-      vote: value
+      vote: value}
     }
 
     switch (method) {
@@ -193,7 +193,7 @@ class VoteTile extends Component {
     return(
       <span className='votes'>
         <span className='upvote'><i className={uvClass} onClick={this.voteHandler}></i></span>
-        <div>{totalVotes}</div>
+        <div id='total'>{totalVotes}</div>
         <span className='downvote'><i className={dvClass} onClick={this.voteHandler}></i></span>
       </span>
     )

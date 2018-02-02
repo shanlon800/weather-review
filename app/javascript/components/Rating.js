@@ -72,11 +72,11 @@ class Rating extends Component {
       <span onMouseOut={this.handleMouseOut}>
         <label>{this.props.label}:</label>
         <span>
-          <i id='1' onClick={this.handleClick} onMouseOver={this.handleHover} className={iconArray[0]} />
-          <i id='2' onClick={this.handleClick} onMouseOver={this.handleHover} className={iconArray[1]} />
-          <i id='3' onClick={this.handleClick} onMouseOver={this.handleHover} className={iconArray[2]} />
-          <i id='4' onClick={this.handleClick} onMouseOver={this.handleHover} className={iconArray[3]} />
-          <i id='5' onClick={this.handleClick} onMouseOver={this.handleHover} className={iconArray[4]} />
+          <span className='icontainer'><i id='1' onClick={this.handleClick} onMouseOver={this.handleHover} className={iconArray[0]} /></span>
+          <span className='icontainer'><i id='2' onClick={this.handleClick} onMouseOver={this.handleHover} className={iconArray[1]} /></span>
+          <span className='icontainer'><i id='3' onClick={this.handleClick} onMouseOver={this.handleHover} className={iconArray[2]} /></span>
+          <span className='icontainer'><i id='4' onClick={this.handleClick} onMouseOver={this.handleHover} className={iconArray[3]} /></span>
+          <span className='icontainer'><i id='5' onClick={this.handleClick} onMouseOver={this.handleHover} className={iconArray[4]} /></span>
         </span>
       </span>
     )

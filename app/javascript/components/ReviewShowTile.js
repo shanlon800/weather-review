@@ -35,7 +35,6 @@ const ReviewShowTile = props => {
       <VoteTile
         key={props.id}
         currentUser={props.currentUser}
-        cityId={props.city_id}
         reviewId={props.id}
       />
       {deleteButton}

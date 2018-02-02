@@ -12,13 +12,13 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
   let!(:review_three) { Review.create!(city_id: city_one.id, user_id: user_1.id, comfort_index: 2, weather_variance: 2) }
 
   let!(:upvote_one) { Vote.create!(user_id: user_1.id, review_id: review_one.id, vote: 1)}
-  let!(:upvote_two) { Vote.create!(user_id: user_1.id, review_id: review_one.id, vote: 1)}
+  let!(:upvote_two) { Vote.create!(user_id: user_3.id, review_id: review_one.id, vote: 1)}
 
-  let!(:upvote_three) { Vote.create!(user_id: user_1.id, review_id: review_two.id, vote: 1)}
+  let!(:upvote_three) { Vote.create!(user_id: user_2.id, review_id: review_two.id, vote: 1)}
   let!(:downvote_one) { Vote.create!(user_id: user_1.id, review_id: review_two.id, vote: -1)}
 
-  let!(:downvote_two) { Vote.create!(user_id: user_1.id, review_id: review_three.id, vote: -1)}
-  let!(:downvote_three) { Vote.create!(user_id: user_1.id, review_id: review_three.id, vote: -1)}
+  let!(:downvote_two) { Vote.create!(user_id: user_2.id, review_id: review_three.id, vote: -1)}
+  let!(:downvote_three) { Vote.create!(user_id: user_3.id, review_id: review_three.id, vote: -1)}
 
   describe "Get#index" do
     it 'should return a list of all reviews based on the city_id' do
@@ -67,8 +67,6 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
 
     it 'will not create if not signed in and give an error' do
       post_json = {review: { city_id: city_one.id, user_id: user_1.id, body: "Boston is meh", comfort_index: 3, weather_variance: 4}}
-      city_reviews = Review.where(city_id: city_one.id)
-      prev_count = city_reviews.count
       expect{ get :create }.to raise_error(ActionController::RoutingError)
 
     end

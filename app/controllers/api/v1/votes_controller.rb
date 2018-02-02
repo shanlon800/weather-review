@@ -5,7 +5,7 @@ class Api::V1::VotesController < ApplicationController
     review_id = params[:review_id]
     vote_object = Vote.where(review_id: review_id)
 
-    render json: vote_object#, except: :id
+    render json: vote_object
   end
 
   def create
@@ -25,7 +25,7 @@ class Api::V1::VotesController < ApplicationController
     if current_user != nil
       vote = Vote.find(params[:id])
       old_vote = vote.vote
-      vote.vote = params[:vote]
+      vote.vote = vote_params[:vote]
       if vote.save
         render json: { new: vote, old: old_vote }
       else
@@ -53,7 +53,11 @@ class Api::V1::VotesController < ApplicationController
   private
 
   def vote_params
-    parameters = { user_id: params[:user_id], review_id: params[:review_id], vote: params[:vote] }
+    parameters = params.require(:vote).permit(
+      :review_id,
+      :user_id,
+      :vote
+    )
     parameters
   end
 end
