@@ -1,4 +1,5 @@
 import React from 'react'
+import 'whatwg-fetch';
 import { Route, IndexRoute, Router, browserHistory } from 'react-router';
 
 import CitiesIndexContainer from './containers/CitiesIndexContainer'

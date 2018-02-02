@@ -10,57 +10,91 @@
   border-radius: 10px;
   font-family: $fonts-sans;
 
-  h5 {
-    margin: 0;
-  }
+  .review-details {
+    width: 95%;
+    height: 100%;
+    padding-right: 10px;
+    vertical-align: top;
+    display: inline-block;
 
-  .rating {
-    i {
-      padding: 0 1px;
-    }
-    .fa-star-o, .fa-square-o {
-      color: $shadow-grey;
-    }
-    .fa-star, .fa-square {
-      text-shadow: 0 .5px 1px $shadow-grey;
-    }
-
-    .rc-1 {
-      color: $rc-1;
-    }
-    .rc-2 {
-      color: $rc-2;
-    }
-    .rc-3 {
-      color: $rc-3;
-    }
-    .rc-4 {
-      color: $rc-4;
-    }
-    .rc-5 {
-      color: $rc-5;
-    }
-
-    .rv-1 {
-      color: $rv-1;
-    }
-    .rv-2 {
-      color: $rv-2;
-    }
-    .rv-3 {
-      color: $rv-3;
-    }
-    .rv-4 {
-      color: $rv-4;
-    }
-    .rv-5 {
-      color: $rv-5;
+    h5 {
+      margin: 0;
+      padding-top: 10px;
     }
   }
 }
 
+.rating, .rate-this {
+  padding: 10px 0;
+  label {
+    display: inline-block;
+  }
+  span {
+    padding: 0 10px;
+  }
+
+  .icontainer {
+    padding: 0;
+    width: 15px;
+  }
+
+  i {
+    padding: 0;
+    margin: 0 2px;
+    font-size: 1.5rem;
+  }
+
+  .fa-star-o, .fa-square-o {
+    color: $shadow-grey;
+  }
+
+  .fa-star, .fa-square {
+    text-shadow: 0 .5px 1px $shadow-grey;
+
+  }
+
+  .rc-1 { color: $rc-1; }
+  .rc-2 { color: $rc-2; }
+  .rc-3 { color: $rc-3; }
+  .rc-4 { color: $rc-4; }
+  .rc-5 { color: $rc-5; }
+
+  .rv-1 { color: $rv-1; }
+  .rv-2 { color: $rv-2; }
+  .rv-3 { color: $rv-3; }
+  .rv-4 { color: $rv-4; }
+  .rv-5 { color: $rv-5; }
+}
+
 .votes {
+  width: 5%;
+  display: inline-block;
   text-align: center;
+  border-left: 1px solid $bg-grey;
+  padding-left: 10px;
+
+  .upvote, .downvote {
+    font-size: 2rem;
+    cursor: pointer;
+  }
+
+  .upvote:hover {
+    color: $rv-4;
+    text-shadow: 0 1px 1px $shadow-grey;
+  }
+
+  .uvselect {
+    color: $rv-3;
+  }
+
+  .downvote:hover {
+    color: $rc-3;
+    text-shadow: 0 1px 1px $shadow-grey;
+  }
+
+  .dvselect {
+    color: $rc-2;
+  }
 }
 
 .show-banner {
