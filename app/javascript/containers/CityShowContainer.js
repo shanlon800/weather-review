@@ -176,6 +176,8 @@ class CityShowContainer extends Component {
           creator={review.user_id}
           handleDelete={handleDelete}
           admin={this.state.admin}
+          averageComfort={this.state.averageComfort}
+          averageVariance={this.state.averageVariance}
         />
       )
     })
@@ -192,6 +194,8 @@ class CityShowContainer extends Component {
             cityId={this.state.city.id}
             admin={this.state.admin}
             cityDelete={this.deleteCity}
+            averageComfort={this.state.averageComfort}
+            averageVariance={this.state.averageVariance}
           />
           <ReviewFormContainer
             id={this.props.params.id}
