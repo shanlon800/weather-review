@@ -216,6 +216,7 @@ class CityShowContainer extends Component {
             cityDelete={this.deleteCity}
             averageComfort={this.state.averageComfort}
             averageVariance={this.state.averageVariance}
+            banner={this.state.city.banner}
           />
           <button onClick={this.handleMountClick} className="btn new-rform">New Review</button>
           {newForm}
@@ -234,6 +235,7 @@ class CityShowContainer extends Component {
             cityId={this.state.city.id}
             averageComfort={this.state.averageComfort}
             averageVariance={this.state.averageVariance}
+            banner={this.state.city.banner.banner}
           />
           {reviews}
         </div>
