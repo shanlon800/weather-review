@@ -1,0 +1,36 @@
+#edit-user-title{
+  background-color: white;
+  background-position: center;
+  color: white;
+  font-size: 4em;
+  font-family: $fonts-serif;
+  padding: 110px;
+  height: 300px;
+  margin-top: -5px;
+  text-align: center;
+  background-image: url(https://cdn.fstoppers.com/styles/full/s3/media/2015/12/lesson-14-hong-kong-victoria-peak-blend-after.jpg);
+}
+
+.edit-user-form {
+  background-color: white;
+  background-size: contain;
+  padding: 3%;
+  margin-top: -2%;
+}
+
+#password-message {
+  font-size: 0.8em;
+}
+
+#password-length {
+  font-size: 0.8em;
+  padding-bottom: 10px;
+}
+
+#user-password {
+  margin-bottom: 3px;
+}
+
+#cancel-account {
+  font-family: $fonts-serif;
+}

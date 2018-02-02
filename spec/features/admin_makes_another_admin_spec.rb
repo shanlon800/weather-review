@@ -50,7 +50,7 @@ feature 'admin can make another user an admin' do
     expect(page).to have_content('Signed in successfully')
 
     visit users_path
-    click_button('delete', id: "delete-#{user_2.id}")
+    click_button('Delete', id: "delete-#{user_2.id}")
     expect(page).to have_no_content("email2@example.com")
 
   end

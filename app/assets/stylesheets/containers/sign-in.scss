@@ -1,0 +1,35 @@
+// #sign-in-form {
+//   background-color: white;
+//   background-size: contain;
+// }
+
+
+#sign-in-title{
+  background-color: white;
+  background-position: center;
+  color: white;
+  font-size: 4em;
+  font-family: $fonts-serif;
+  padding: 110px;
+  height: 300px;
+  margin-top: -5px;
+  text-align: center;
+  background-image: url(https://cdn.fstoppers.com/styles/full/s3/media/2015/12/lesson-14-hong-kong-victoria-peak-blend-after.jpg);
+}
+
+.user-field {
+  display:inline-block;
+  margin-left: 2%;
+  margin-right: 2%;
+  width: 80%;
+  font-family: $fonts-serif;
+}
+
+.sign-in-form-label {
+  background-color: white;
+  background-size: contain;
+}
+
+#sign-in-links {
+  margin: 3%;
+}
