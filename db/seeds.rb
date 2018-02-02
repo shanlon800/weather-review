@@ -81,6 +81,7 @@ end
   Review.create!(city_id: city.id, user_id: User.order("RANDOM()").first.id, body: "#{body}", comfort_index: rand(5)+1, weather_variance: rand(5)+1)
 }
 
-# 100.times {
-#
-# }
+200.times {
+  Vote.create(user_id: User.order("RANDOM()").first.id, review_id: Review.order("RANDOM()").first.id, vote: -1)
+  Vote.create(user_id: User.order("RANDOM()").first.id, review_id: Review.order("RANDOM()").first.id, vote: 1)
+}

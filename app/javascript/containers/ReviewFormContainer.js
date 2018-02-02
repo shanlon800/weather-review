@@ -97,29 +97,30 @@ class ReviewFormContainer extends Component {
       <div>
           <form className="new-article-form callout">
           {errorMessage}
-            <Rating
-              content={this.state.reviewComfort}
-              label="Comfort Index"
-              name="reviewComfort"
-              rateType="comfort"
-              value={this.state.reviewComfort}
-              handlerFunction={this.handleRateChange}
-            />
-            <Rating
-              content={this.state.reviewVariance}
-              label="Variance Index"
-              name="reviewVariance"
-              rateType="variance"
-              value={this.state.reviewVariance}
-              handlerFunction={this.handleRateChange}
-            />
+            <span className="rate-this">
+              <Rating
+                content={this.state.reviewComfort}
+                label="Comfort Index"
+                name="reviewComfort"
+                rateType="comfort"
+                value={this.state.reviewComfort}
+                handlerFunction={this.handleRateChange}
+              />
+              <Rating
+                content={this.state.reviewVariance}
+                label="Variance Index"
+                name="reviewVariance"
+                rateType="variance"
+                value={this.state.reviewVariance}
+                handlerFunction={this.handleRateChange}
+              />
+            </span>
             <TextField
               content={this.state.reviewBody}
               label="Review"
               name="reviewBody"
               handleBodyChange={this.handleBodyChange}
             />
-
             <div className="button-group">
               <button className="button" onClick={this.handleClearButton}>Clear</button>
               <input className="button" type="submit" value="Submit" onClick={this.handleSubmit}/>
