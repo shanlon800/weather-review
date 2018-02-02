@@ -91,14 +91,14 @@ class ReviewFormContainer extends Component {
 
   render() {
     let errorMessage = this.state.errors.map(error => {
-      return(<p key={error}> {error} </p>)
+      return(<span key={error}> {error} </span>)
     })
     return(
       <div className="form-container">
         <div className="review-form">
           <h5>New Review</h5>
             <form className="new-article-form callout">
-            {errorMessage}
+            <span className="errors">{errorMessage}</span>
               <span className="rate-this">
                 <Rating
                   content={this.state.reviewComfort}
