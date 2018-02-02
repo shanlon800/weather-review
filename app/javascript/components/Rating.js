@@ -69,8 +69,8 @@ class Rating extends Component {
     }
 
     return (
-      <span onMouseOut={this.handleMouseOut}>
-        <label>{this.props.label}:</label>
+      <span className='rate-function' onMouseOut={this.handleMouseOut}>
+        <span><label>{this.props.label}</label></span>
         <span>
           <span className='icontainer'><i id='1' onClick={this.handleClick} onMouseOver={this.handleHover} className={iconArray[0]} /></span>
           <span className='icontainer'><i id='2' onClick={this.handleClick} onMouseOver={this.handleHover} className={iconArray[1]} /></span>

@@ -12,11 +12,13 @@ class CityShowContainer extends Component {
       currentUser: '',
       admin: false,
       averageComfort: 0,
-      averageVariance: 0
+      averageVariance: 0,
+      formMounted: false
     }
     this.addNewReview = this.addNewReview.bind(this)
     this.deleteReview = this.deleteReview.bind(this)
     this.deleteCity = this.deleteCity.bind(this)
+    this.handleMountClick = this.handleMountClick.bind(this)
   }
 
   addNewReview(formPayload) {
@@ -158,6 +160,10 @@ class CityShowContainer extends Component {
     window.location.href = '/cities'
   }
 
+  handleMountClick() {
+    let theformMounted = !this.state.formMounted;
+    this.setState({ formMounted: theformMounted });
+  }
 
   render() {
     let addNewReview = (formPayload) => this.addNewReview(formPayload)
@@ -186,6 +192,17 @@ class CityShowContainer extends Component {
     })
 
     if (this.state.currentUser != null ) {
+      let newForm;
+      if (this.state.formMounted) {
+        newForm = <ReviewFormContainer
+          id={this.props.params.id}
+          clearFn={this.handleMountClick}
+          addNewReview={this.addNewReview}
+          currentUser={this.state.currentUser}
+        />;
+      } else {
+        newForm = null;
+      }
       return(
         <div>
           <CityShowTile
@@ -201,11 +218,8 @@ class CityShowContainer extends Component {
             averageVariance={this.state.averageVariance}
             banner={this.state.city.banner}
           />
-          <ReviewFormContainer
-            id={this.props.params.id}
-            addNewReview={this.addNewReview}
-            currentUser={this.state.currentUser}
-          />
+          <button onClick={this.handleMountClick} className="btn new-rform">New Review</button>
+          {newForm}
           {reviews}
         </div>
       )

@@ -26,8 +26,9 @@
 
 .rating, .rate-this {
   padding: 10px 0;
+
   label {
-    display: inline-block;
+    display: block;
   }
   span {
     padding: 0 10px;
@@ -64,6 +65,11 @@
   .rv-3 { color: $rv-3; }
   .rv-4 { color: $rv-4; }
   .rv-5 { color: $rv-5; }
+}
+
+.rate-this {
+  width: 50%;
+  text-align: center;
 }
 
 .votes {
@@ -115,4 +121,8 @@
   position: relative;
   top: -18rem;
   left: 7.5rem;
+}
+
+.new-rform {
+  margin: 15px !important;
 }

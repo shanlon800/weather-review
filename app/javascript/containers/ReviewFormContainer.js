@@ -64,7 +64,7 @@ class ReviewFormContainer extends Component {
         user_id: this.props.currentUser
       }
       this.props.addNewReview(formPayload);
-      this.handleClearForm();
+      this.props.clearFn()
     } else {
       this.setState({errors: errors})
     }
@@ -94,38 +94,42 @@ class ReviewFormContainer extends Component {
       return(<p key={error}> {error} </p>)
     })
     return(
-      <div>
-          <form className="new-article-form callout">
-          {errorMessage}
-            <span className="rate-this">
-              <Rating
-                content={this.state.reviewComfort}
-                label="Comfort Index"
-                name="reviewComfort"
-                rateType="comfort"
-                value={this.state.reviewComfort}
-                handlerFunction={this.handleRateChange}
+      <div className="form-container">
+        <div className="review-form">
+          <h5>New Review</h5>
+            <form className="new-article-form callout">
+            {errorMessage}
+              <span className="rate-this">
+                <Rating
+                  content={this.state.reviewComfort}
+                  label="Comfort Index"
+                  name="reviewComfort"
+                  rateType="comfort"
+                  value={this.state.reviewComfort}
+                  handlerFunction={this.handleRateChange}
+                />
+                <Rating
+                  content={this.state.reviewVariance}
+                  label="Variance Index"
+                  name="reviewVariance"
+                  rateType="variance"
+                  value={this.state.reviewVariance}
+                  handlerFunction={this.handleRateChange}
+                />
+              </span>
+              <TextField
+                content={this.state.reviewBody}
+                label="Review"
+                name="reviewBody"
+                handleBodyChange={this.handleBodyChange}
               />
-              <Rating
-                content={this.state.reviewVariance}
-                label="Variance Index"
-                name="reviewVariance"
-                rateType="variance"
-                value={this.state.reviewVariance}
-                handlerFunction={this.handleRateChange}
-              />
-            </span>
-            <TextField
-              content={this.state.reviewBody}
-              label="Review"
-              name="reviewBody"
-              handleBodyChange={this.handleBodyChange}
-            />
-            <div className="button-group">
-              <button className="button" onClick={this.handleClearButton}>Clear</button>
-              <input className="button" type="submit" value="Submit" onClick={this.handleSubmit}/>
-            </div>
-          </form>
+              <div className="button-group">
+                <button className="button" onClick={this.props.clearFn}>Cancel</button>
+                <input className="button" type="submit" value="Submit" onClick={this.handleSubmit}/>
+              </div>
+            </form>
+          </div>
+          <div className="form-sheet"></div>
         </div>
     )
   }
