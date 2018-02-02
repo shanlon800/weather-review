@@ -4,6 +4,9 @@
 @import 'elements/inheritance';
 @import 'containers/show';
 @import 'containers/city-form';
+@import 'containers/user-form';
+@import 'containers/sign-in';
+@import 'containers/edit-user';
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Ubuntu+Mono|Volkhov');
 
 // tags - - - - - - - - - - - - - - -
@@ -93,3 +96,32 @@ button.secondary, .button.secondary {
      width: 17%;
      height: 20%;
  }
+
+// Admin Page
+ #admin-page {
+   background-color: white;
+   background-size: contain;
+   text-align: center;
+ }
+
+ .button_to {
+   display:inline;
+ }
+
+ #admin-title {
+   text-align: center;
+   font-family: $fonts-serif;
+ }
+
+ .admin-user-tile {
+   @extend %city-objects;
+ }
+
+.edit_user {
+  display: inline;
+}
+
+.admin-label {
+  display: inline;
+  padding-left: 2em;
+}

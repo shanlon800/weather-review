@@ -1,29 +1,37 @@
-<h2>Sign up</h2>
-
+<h2 id="sign-up-title">New Account Sign up</h2>
+<div id="new-user-form">
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
+  <div id="new-user-errors">
+    <%= devise_error_messages! %>
+  </div>
+
+  <div class="user-field">
+    <%= f.label :email, html: {class: "user-field-label"}%>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
+  <div class="user-field">
+    <%= f.label :password, html: {class: "user-field-label"} %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
+    <h7 id="min-password">(<%= @minimum_password_length %> characters minimum)</h7>
+    <% end %>
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
+  <div class="user-field">
+    <%= f.label :password_confirmation, html: {class: "user-field-label"} %>
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div id="new-user-submit">
+    <%= f.submit "Sign up", class: "success button"%>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+  <div id="already-account">
+    <%- if controller_name != 'sessions' %>
+      <%= link_to "Already have an Account?", new_session_path(resource_name) %><br />
+    <% end -%>
+  </div>
+</div>
