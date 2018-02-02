@@ -3,19 +3,22 @@ import ReviewFormContainer from '../../../app/javascript/containers/ReviewFormCo
 
 describe('ReviewFormContainer', () => {
 
-  let wrapper;
+  let wrapper,
+  clearFn;
 
   beforeEach(() => {
     jasmineEnzyme();
+    clearFn = jasmine.createSpy('onClick spy');
     wrapper = mount(
       <ReviewFormContainer
+        clearFn={clearFn}
       />
     );
   });
 
   it ('renders a button tag with an onClick method', () => {
-   expect(wrapper.find('button').props()).toEqual(jasmine.objectContaining({
-     onClick: jasmine.any(Function)
-   }))
+    expect(wrapper.find('button')).toBePresent();
+    wrapper.find('button').simulate('click');
+    expect(clearFn).toHaveBeenCalled();
  })
 })

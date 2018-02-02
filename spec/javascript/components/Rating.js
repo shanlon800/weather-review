@@ -29,7 +29,7 @@ describe('Rating', () => {
   })
 
   it('should render a Variance Index label', () => {
-    expect(wrapper.find('label').text()).toBe('Variance Index:');
+    expect(wrapper.find('label').text()).toBe('Variance Index');
   })
 
   it('should render i tags', () => {
@@ -72,7 +72,7 @@ describe('Rating', () => {
   })
 
   it('should render a Variance Index label', () => {
-    expect(wrapper.find('label').text()).toBe('Comfort Index:');
+    expect(wrapper.find('label').text()).toBe('Comfort Index');
   })
 
   it('should render i tags', () => {
